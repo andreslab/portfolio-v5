@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.rancho">
+    package="com.example.porfolio">
    <application
-        android:label="rancho"
+        android:label="porfolio"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:rancho/responsive/responsive.dart';
-import 'package:rancho/responsive/responsive.dart';
-import 'package:rancho/screens/screens.dart';
+import 'package:porfolio/responsive/responsive.dart';
+import 'package:porfolio/responsive/responsive.dart';
+import 'package:porfolio/screens/screens.dart';
 import 'package:provider/provider.dart';
 
-import 'package:rancho/providers/ui_provider.dart';
-import 'package:rancho/screens/utils.dart';
-import 'package:rancho/widgets/custom_drawer.dart';
-import 'package:rancho/widgets/widgets.dart';
+import 'package:porfolio/providers/ui_provider.dart';
+import 'package:porfolio/screens/utils.dart';
+import 'package:porfolio/widgets/custom_drawer.dart';
+import 'package:porfolio/widgets/widgets.dart';
 
 class HomeDesktopScreen extends StatelessWidget {
   @override
@@ -38,10 +38,6 @@ class _HomeScreenBody extends StatelessWidget {
       case 0:
         return ResumeDesktopScreen();
       case 1:
-        return ProductionDesktopScreen();
-      case 2:
-        return FinancesDesktopScreen();
-      case 3:
         return ProductsDesktopScreen();
       default:
         return ResumeDesktopScreen();

@@ -1,6 +1,6 @@
 {
-    "name": "rancho",
-    "short_name": "rancho",
+    "name": "porfolio",
+    "short_name": "porfolio",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

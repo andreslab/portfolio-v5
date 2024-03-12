@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rancho/screens/screens.dart';
+import 'package:porfolio/screens/screens.dart';
 
 class DesktopScaffold extends StatelessWidget {
   const DesktopScaffold({super.key});

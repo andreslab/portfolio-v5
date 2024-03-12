@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:rancho/responsive/responsive.dart';
-import 'package:rancho/screens/screens.dart';
+import 'package:porfolio/responsive/responsive.dart';
+import 'package:porfolio/screens/screens.dart';
 import 'package:provider/provider.dart';
-import 'package:rancho/providers/ui_provider.dart';
+import 'package:porfolio/providers/ui_provider.dart';
+import 'package:porfolio/theme/app_theme.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,11 +24,7 @@ class MyApp extends StatelessWidget {
               tabletScaffold: TabletScaffold(),
               desktopScaffold: DesktopScaffold()),
         },
-        theme: ThemeData(
-            appBarTheme: AppBarTheme(color: Colors.red),
-            primaryColor: Colors.orange,
-            floatingActionButtonTheme:
-                FloatingActionButtonThemeData(backgroundColor: Colors.orange)),
+        theme: AppTheme.themeData,
       ),
     );
   }
