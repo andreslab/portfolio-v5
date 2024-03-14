@@ -335,7 +335,7 @@ class MobileContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final width = size.width;
-    final height = size.height * 0.4;
+    final height = size.height;
     return Container(
       width: width,
       height: height,

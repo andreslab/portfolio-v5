@@ -20,7 +20,7 @@ class Body extends StatelessWidget {
       case Platform.tablet:
         return TabletContainer();
       case Platform.mobile:
-        return TabletContainer();
+        return MobileContainer();
       default:
         return DesktopContainer();
     }
@@ -78,6 +78,39 @@ class TabletContainer extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final width = size.width;
     final height = size.height * 0.5;
+    return Container(
+      width: width,
+      height: height,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Spacer(),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
+            child: Text(
+              'Get in touch',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+          ),
+          ContactForm(),
+          Spacer(),
+        ],
+      ),
+    );
+  }
+}
+
+class MobileContainer extends StatelessWidget {
+  const MobileContainer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final width = size.width;
+    final height = size.height;
     return Container(
       width: width,
       height: height,

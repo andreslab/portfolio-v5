@@ -149,33 +149,31 @@ class MobileContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Container(
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10), color: backgroundColor),
-        child: Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                'Title',
-                style: TextStyle(
-                    fontSize: 30.0,
-                    color: isDarkTheme ? Colors.white : Colors.black),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Text(
-                'Lorem ipsum dolor sit amet consectetuer adipiscing elit aenean commodo ligula eget.',
-                style: TextStyle(
-                    fontSize: 15.0,
-                    color: isDarkTheme ? Colors.white : Colors.black),
-                textAlign: TextAlign.start,
-              )
-            ],
-          ),
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10), color: backgroundColor),
+      child: Expanded(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              'Title',
+              style: TextStyle(
+                  fontSize: 30.0,
+                  color: isDarkTheme ? Colors.white : Colors.black),
+            ),
+            SizedBox(
+              height: 5,
+            ),
+            Text(
+              'Lorem ipsum dolor sit amet consectetuer adipiscing elit aenean commodo ligula eget.',
+              style: TextStyle(
+                  fontSize: 15.0,
+                  color: isDarkTheme ? Colors.white : Colors.black),
+              textAlign: TextAlign.start,
+            )
+          ],
         ),
       ),
     );
