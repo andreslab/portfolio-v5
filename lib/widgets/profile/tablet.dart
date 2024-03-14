@@ -11,6 +11,8 @@ class Tablet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Body();
+    return Body(
+      platform: Platform.tablet,
+    );
   }
 }
