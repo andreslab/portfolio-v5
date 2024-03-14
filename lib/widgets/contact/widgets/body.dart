@@ -1,20 +1,102 @@
 import 'package:flutter/material.dart';
-import 'package:porfolio/widgets/contact/widgets/body.dart';
+import 'package:porfolio/theme/app_theme.dart';
 import 'package:porfolio/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:porfolio/screens/utils.dart';
 
-import '../../theme/app_theme.dart';
+class Body extends StatelessWidget {
+  final Platform platform;
 
-class Desktop extends StatelessWidget {
-  const Desktop({
+  const Body({
+    super.key,
+    required this.platform,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    switch (platform) {
+      case Platform.desktop:
+        return DesktopContainer();
+      case Platform.tablet:
+        return TabletContainer();
+      case Platform.mobile:
+        return TabletContainer();
+      default:
+        return DesktopContainer();
+    }
+  }
+}
+
+class DesktopContainer extends StatelessWidget {
+  const DesktopContainer({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Body(
-      platform: Platform.desktop,
+    final size = MediaQuery.of(context).size;
+    final width = size.width - Constants.DRAWER_WIDTH;
+    final height = size.height * 0.5;
+    return Container(
+      width: width,
+      height: height,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Spacer(),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
+            child: Text(
+              'Get in touch',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+          ),
+          Row(
+            children: [
+              Expanded(child: ContactForm()),
+              Container(
+                width: width * 0.4,
+                child: Image.asset('images/image-preview.png'),
+              )
+            ],
+          ),
+          Spacer(),
+        ],
+      ),
+    );
+  }
+}
+
+class TabletContainer extends StatelessWidget {
+  const TabletContainer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final width = size.width;
+    final height = size.height * 0.5;
+    return Container(
+      width: width,
+      height: height,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Spacer(),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
+            child: Text(
+              'Get in touch',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+          ),
+          ContactForm(),
+          Spacer(),
+        ],
+      ),
     );
   }
 }
