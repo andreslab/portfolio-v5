@@ -13,10 +13,12 @@ class CustomNavigationBar extends StatelessWidget {
       currentIndex: currentIndex,
       elevation: 0,
       items: <BottomNavigationBarItem>[
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Resumen'),
-        BottomNavigationBarItem(icon: Icon(Icons.list_alt), label: 'Registro'),
-        BottomNavigationBarItem(icon: Icon(Icons.newspaper), label: 'Noticias'),
-        BottomNavigationBarItem(icon: Icon(Icons.alarm), label: 'Alarmas'),
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'HOME'),
+        BottomNavigationBarItem(icon: Icon(Icons.person), label: 'ABOUT'),
+        BottomNavigationBarItem(icon: Icon(Icons.category), label: 'SERVICES'),
+        BottomNavigationBarItem(icon: Icon(Icons.school), label: 'EXPERIENCE'),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.email_rounded), label: 'CONTACT'),
       ],
     );
   }

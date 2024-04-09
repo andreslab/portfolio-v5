@@ -21,8 +21,8 @@ class HomeMobileScreen extends StatelessWidget {
           ]),
       body: _HomeScreenBody(),
       bottomNavigationBar: CustomNavigationBar(),
-      floatingActionButton: ActionButton(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButton: ActionButton(),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
