@@ -1,36 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:porfolio/providers/providers.dart';
 import 'package:porfolio/theme/app_theme.dart';
+import 'package:porfolio/utils.dart';
 import 'package:porfolio/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:porfolio/screens/utils.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'package:porfolio/models/models.dart';
+
 class Body extends StatelessWidget {
   final Platform platform;
 
-  const Body({
-    super.key,
-    required this.platform,
-  });
+  const Body({super.key, required this.platform});
 
   @override
   Widget build(BuildContext context) {
+    final personalProvider = Provider.of<ProfileProvider>(context);
+    final personal = personalProvider.personal.data?.attributes;
+
     switch (platform) {
       case Platform.desktop:
-        return DesktopContainer();
+        return DesktopContainer(
+          personalData: personal,
+        );
       case Platform.tablet:
-        return TabletContainer();
+        return TabletContainer(
+          personalData: personal,
+        );
       case Platform.mobile:
-        return MobileContainer();
+        return MobileContainer(
+          personalData: personal,
+        );
       default:
-        return DesktopContainer();
+        return DesktopContainer(
+          personalData: personal,
+        );
     }
   }
 }
 
 class DesktopContainer extends StatelessWidget {
+  final PersonalAttributes? personalData;
   const DesktopContainer({
     super.key,
+    required this.personalData,
   });
 
   @override
@@ -52,14 +66,14 @@ class DesktopContainer extends StatelessWidget {
             height: 10,
           ),
           Text(
-            'Jaime Andrade',
+            '${personalData?.name}',
             style: Theme.of(context).textTheme.titleLarge,
           ),
           SizedBox(
             height: 10,
           ),
           Text(
-            'Full-stack developer',
+            '${personalData?.role}',
             style: Theme.of(context).textTheme.titleSmall,
           ),
           SizedBox(
@@ -74,7 +88,7 @@ class DesktopContainer extends StatelessWidget {
                     color: AppTheme.iconPrimary,
                   ),
                   onPressed: () {
-                    print("Pressed");
+                    openUrl('${personalData?.instagram}');
                   }),
               IconButton(
                   icon: FaIcon(
@@ -82,7 +96,7 @@ class DesktopContainer extends StatelessWidget {
                     color: AppTheme.iconPrimary,
                   ),
                   onPressed: () {
-                    print("Pressed");
+                    openUrl('${personalData?.twitter}');
                   }),
               IconButton(
                   icon: FaIcon(
@@ -90,7 +104,7 @@ class DesktopContainer extends StatelessWidget {
                     color: AppTheme.iconPrimary,
                   ),
                   onPressed: () {
-                    print("Pressed");
+                    openUrl('${personalData?.linkedin}');
                   }),
               IconButton(
                   icon: FaIcon(
@@ -98,7 +112,7 @@ class DesktopContainer extends StatelessWidget {
                     color: AppTheme.iconPrimary,
                   ),
                   onPressed: () {
-                    print("Pressed");
+                    openUrl('${personalData?.github}');
                   }),
               IconButton(
                   icon: FaIcon(
@@ -106,7 +120,7 @@ class DesktopContainer extends StatelessWidget {
                     color: AppTheme.iconPrimary,
                   ),
                   onPressed: () {
-                    print("Pressed");
+                    openUrl('${personalData?.facebook}');
                   })
             ],
           ),
@@ -114,7 +128,9 @@ class DesktopContainer extends StatelessWidget {
             height: 10,
           ),
           ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                openUrl('${personalData?.cv}');
+              },
               child: Text(
                 'HIRE ME',
               )),
@@ -137,8 +153,10 @@ class DesktopContainer extends StatelessWidget {
 }
 
 class TabletContainer extends StatelessWidget {
+  final PersonalAttributes? personalData;
   const TabletContainer({
     super.key,
+    required this.personalData,
   });
 
   @override
@@ -160,14 +178,14 @@ class TabletContainer extends StatelessWidget {
             height: 10,
           ),
           Text(
-            'Jaime Andrade',
+            '${personalData?.name}',
             style: Theme.of(context).textTheme.titleLarge,
           ),
           SizedBox(
             height: 10,
           ),
           Text(
-            'Full-stack developer',
+            '${personalData?.role}',
             style: Theme.of(context).textTheme.titleSmall,
           ),
           SizedBox(
@@ -245,8 +263,10 @@ class TabletContainer extends StatelessWidget {
 }
 
 class MobileContainer extends StatelessWidget {
+  final PersonalAttributes? personalData;
   const MobileContainer({
     super.key,
+    required this.personalData,
   });
 
   @override
@@ -268,14 +288,14 @@ class MobileContainer extends StatelessWidget {
             height: 10,
           ),
           Text(
-            'Jaime Andrade',
+            '${personalData?.name}',
             style: Theme.of(context).textTheme.titleLarge,
           ),
           SizedBox(
             height: 10,
           ),
           Text(
-            'Full-stack developer',
+            '${personalData?.role}',
             style: Theme.of(context).textTheme.titleSmall,
           ),
           SizedBox(

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:porfolio/providers/providers.dart';
 import 'package:porfolio/theme/app_theme.dart';
 import 'package:porfolio/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:porfolio/screens/utils.dart';
+
+import 'package:porfolio/models/models.dart';
 
 class Body extends StatelessWidget {
   final Platform platform;
@@ -14,22 +17,35 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final personalProvider = Provider.of<ProfileProvider>(context);
+    final personal = personalProvider.personal;
+
     switch (platform) {
       case Platform.desktop:
-        return DesktopContainer();
+        return DesktopContainer(
+          personalData: personal,
+        );
       case Platform.tablet:
-        return TabletContainer();
+        return TabletContainer(
+          personalData: personal,
+        );
       case Platform.mobile:
-        return MobileContainer();
+        return MobileContainer(
+          personalData: personal,
+        );
       default:
-        return DesktopContainer();
+        return DesktopContainer(
+          personalData: personal,
+        );
     }
   }
 }
 
 class DesktopContainer extends StatelessWidget {
+  final Personal personalData;
   const DesktopContainer({
     super.key,
+    required this.personalData,
   });
 
   @override
@@ -184,8 +200,10 @@ class DesktopContainer extends StatelessWidget {
 }
 
 class TabletContainer extends StatelessWidget {
+  final Personal personalData;
   const TabletContainer({
     super.key,
+    required this.personalData,
   });
 
   @override
@@ -327,8 +345,10 @@ class TabletContainer extends StatelessWidget {
 }
 
 class MobileContainer extends StatelessWidget {
+  final Personal personalData;
   const MobileContainer({
     super.key,
+    required this.personalData,
   });
 
   @override

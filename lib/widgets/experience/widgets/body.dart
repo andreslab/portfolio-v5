@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:porfolio/models/models.dart';
+import 'package:porfolio/providers/providers.dart';
 import 'package:porfolio/theme/app_theme.dart';
 import 'package:porfolio/widgets/widgets.dart';
 import 'package:provider/provider.dart';
@@ -14,22 +16,44 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final instituteProvider = Provider.of<InstituteProvider>(context);
+    final institutes = instituteProvider.institutes;
+
+    final jobProvider = Provider.of<JobProvider>(context);
+    final jobs = jobProvider.jobs;
+
     switch (platform) {
       case Platform.desktop:
-        return DesktopContainer();
+        return DesktopContainer(
+          institutes: institutes,
+          jobs: jobs,
+        );
       case Platform.tablet:
-        return TabletContainer();
+        return TabletContainer(
+          institutes: institutes,
+          jobs: jobs,
+        );
       case Platform.mobile:
-        return TabletContainer();
+        return TabletContainer(
+          institutes: institutes,
+          jobs: jobs,
+        );
       default:
-        return DesktopContainer();
+        return DesktopContainer(
+          institutes: institutes,
+          jobs: jobs,
+        );
     }
   }
 }
 
 class DesktopContainer extends StatelessWidget {
+  final Institute institutes;
+  final Job jobs;
   const DesktopContainer({
     super.key,
+    required this.institutes,
+    required this.jobs,
   });
 
   @override
@@ -58,18 +82,30 @@ class DesktopContainer extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                     width: width * 0.45,
                     child: ExperienceCard(
                       type: Type.JOB,
+                      items: jobs.data
+                          .map((e) => ItemModel(
+                              period: '2024',
+                              title: e.attributes.company,
+                              subtitle: e.attributes.description))
+                          .toList(),
                     )),
                 Spacer(),
                 SizedBox(
                     width: width * 0.45,
                     child: ExperienceCard(
                       type: Type.ACADEMYC,
+                      items: institutes.data
+                          .map((e) => ItemModel(
+                              period: '2024',
+                              title: e.attributes.name,
+                              subtitle: e.attributes.career))
+                          .toList(),
                     )),
               ],
             ),
@@ -82,8 +118,12 @@ class DesktopContainer extends StatelessWidget {
 }
 
 class TabletContainer extends StatelessWidget {
+  final Institute institutes;
+  final Job jobs;
   const TabletContainer({
     super.key,
+    required this.institutes,
+    required this.jobs,
   });
 
   @override
@@ -111,6 +151,12 @@ class TabletContainer extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
             child: ExperienceCard(
               type: Type.JOB,
+              items: jobs.data
+                  .map((e) => ItemModel(
+                      period: '2024',
+                      title: e.attributes.company,
+                      subtitle: e.attributes.description))
+                  .toList(),
             ),
           ),
           Spacer(),
@@ -118,6 +164,12 @@ class TabletContainer extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
             child: ExperienceCard(
               type: Type.ACADEMYC,
+              items: institutes.data
+                  .map((e) => ItemModel(
+                      period: '2024',
+                      title: e.attributes.name,
+                      subtitle: e.attributes.career))
+                  .toList(),
             ),
           ),
           Spacer(),

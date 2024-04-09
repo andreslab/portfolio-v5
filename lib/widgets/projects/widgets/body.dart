@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:porfolio/theme/app_theme.dart';
+import 'package:porfolio/models/models.dart';
+import 'package:porfolio/providers/providers.dart';
 import 'package:porfolio/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:porfolio/screens/utils.dart';
@@ -14,25 +15,44 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final projectProvider = Provider.of<ProjectProvider>(context);
+    final projects = projectProvider.projects;
+    final categoryProvider = Provider.of<CategoryProvider>(context);
+    final categories = categoryProvider.categories;
     switch (platform) {
       case Platform.desktop:
-        return DesktopContainer();
+        return DesktopContainer(
+          projects: projects,
+          categories: categories,
+        );
       case Platform.tablet:
-        return TabletContainer();
+        return TabletContainer(
+          projects: projects,
+          categories: categories,
+        );
       case Platform.mobile:
-        return MobileContainer();
+        return MobileContainer(
+          projects: projects,
+          categories: categories,
+        );
       default:
-        return DesktopContainer();
+        return DesktopContainer(
+          projects: projects,
+          categories: categories,
+        );
     }
   }
 }
 
 class DesktopContainer extends StatelessWidget {
-  final List<String> items = List.generate(5, (index) => 'Item ${index + 1}');
+  final Project projects;
+  final Category categories;
 
-  // const DesktopContainer({
-  //   super.key,
-  // });
+  DesktopContainer({
+    super.key,
+    required this.projects,
+    required this.categories,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -61,28 +81,13 @@ class DesktopContainer extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
             height: 50,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              // crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                FilterItem(title: 'Everything'),
-                SizedBox(
-                  width: 10,
-                ),
-                FilterItem(title: 'Web'),
-                SizedBox(
-                  width: 10,
-                ),
-                FilterItem(title: 'Apps'),
-                SizedBox(
-                  width: 10,
-                ),
-                FilterItem(title: 'Platform'),
-                SizedBox(
-                  width: 10,
-                ),
-                FilterItem(title: 'Game'),
-              ],
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: categories.data.length,
+              itemBuilder: (context, index) {
+                String title = categories.data[index].attributes.name;
+                return FilterItem(title: title);
+              },
             ),
           ),
           SizedBox(
@@ -96,12 +101,12 @@ class DesktopContainer extends StatelessWidget {
               crossAxisSpacing: 10.0, // Espacio horizontal entre los elementos
               mainAxisSpacing: 10.0, // Espacio vertical entre los elementos
             ),
-            itemCount: items.length,
+            itemCount: projects.data.length,
             itemBuilder: (BuildContext context, int index) {
+              ProjectDatum project = projects.data[index];
               return ProjectCard(
-                title: 'Title',
-                subtitle:
-                    'Lorem ipsum dolor sit amet consectetuer adipiscing elit aenean commodo ligula eget.',
+                title: project.attributes.title,
+                subtitle: project.attributes.description ?? '',
               );
             },
           ),
@@ -116,10 +121,14 @@ class DesktopContainer extends StatelessWidget {
 
 class TabletContainer extends StatelessWidget {
   final List<String> items = List.generate(3, (index) => 'Item ${index + 1}');
+  final Project projects;
+  final Category categories;
 
-  // const TabletContainer({
-  //   super.key,
-  // });
+  TabletContainer({
+    super.key,
+    required this.projects,
+    required this.categories,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -148,28 +157,13 @@ class TabletContainer extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
             height: 50,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              // crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                FilterItem(title: 'Everything'),
-                SizedBox(
-                  width: 10,
-                ),
-                FilterItem(title: 'Web'),
-                SizedBox(
-                  width: 10,
-                ),
-                FilterItem(title: 'Apps'),
-                SizedBox(
-                  width: 10,
-                ),
-                FilterItem(title: 'Platform'),
-                SizedBox(
-                  width: 10,
-                ),
-                FilterItem(title: 'Game'),
-              ],
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: categories.data.length,
+              itemBuilder: (context, index) {
+                String title = categories.data[index].attributes.name;
+                return FilterItem(title: title);
+              },
             ),
           ),
           SizedBox(
@@ -183,12 +177,12 @@ class TabletContainer extends StatelessWidget {
               crossAxisSpacing: 10.0, // Espacio horizontal entre los elementos
               mainAxisSpacing: 10.0, // Espacio vertical entre los elementos
             ),
-            itemCount: items.length,
+            itemCount: projects.data.length,
             itemBuilder: (BuildContext context, int index) {
+              ProjectDatum project = projects.data[index];
               return ProjectCard(
-                title: 'Title',
-                subtitle:
-                    'Lorem ipsum dolor sit amet consectetuer adipiscing elit aenean commodo ligula eget.',
+                title: project.attributes.title,
+                subtitle: project.attributes.description ?? '',
               );
             },
           ),
@@ -203,10 +197,14 @@ class TabletContainer extends StatelessWidget {
 
 class MobileContainer extends StatelessWidget {
   final List<String> items = List.generate(1, (index) => 'Item ${index + 1}');
+  final Project projects;
+  final Category categories;
 
-  // const MobileContainer({
-  //   super.key,
-  // });
+  MobileContainer({
+    super.key,
+    required this.projects,
+    required this.categories,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -235,28 +233,13 @@ class MobileContainer extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
             height: 50,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              // crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                FilterItem(title: 'Everything'),
-                SizedBox(
-                  width: 10,
-                ),
-                FilterItem(title: 'Web'),
-                SizedBox(
-                  width: 10,
-                ),
-                FilterItem(title: 'Apps'),
-                SizedBox(
-                  width: 10,
-                ),
-                FilterItem(title: 'Platform'),
-                SizedBox(
-                  width: 10,
-                ),
-                FilterItem(title: 'Game'),
-              ],
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: categories.data.length,
+              itemBuilder: (context, index) {
+                String title = categories.data[index].attributes.name;
+                return FilterItem(title: title);
+              },
             ),
           ),
           SizedBox(
@@ -270,12 +253,12 @@ class MobileContainer extends StatelessWidget {
               crossAxisSpacing: 10.0, // Espacio horizontal entre los elementos
               mainAxisSpacing: 10.0, // Espacio vertical entre los elementos
             ),
-            itemCount: items.length,
+            itemCount: projects.data.length,
             itemBuilder: (BuildContext context, int index) {
+              ProjectDatum project = projects.data[index];
               return ProjectCard(
-                title: 'Title',
-                subtitle:
-                    'Lorem ipsum dolor sit amet consectetuer adipiscing elit aenean commodo ligula eget.',
+                title: project.attributes.title,
+                subtitle: project.attributes.description ?? '',
               );
             },
           ),
