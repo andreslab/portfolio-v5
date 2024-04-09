@@ -1,18 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:porfolio/responsive/responsive.dart';
-import 'package:porfolio/screens/screens.dart';
 import 'package:provider/provider.dart';
-import 'package:porfolio/providers/ui_provider.dart';
+import 'package:porfolio/providers/providers.dart';
 import 'package:porfolio/theme/app_theme.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() => runApp(MyApp());
+Future main() async {
+  await dotenv.load(fileName: ".env");
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => UiProvider()),
+        ChangeNotifierProvider(
+          create: (_) => UiProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => CategoryProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => InstituteProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => TopicsProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => JobProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ProjectProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ProfileProvider(),
+          lazy: false,
+        )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
