@@ -4,9 +4,23 @@ import 'package:porfolio/theme/app_theme.dart';
 
 enum Type { JOB, ACADEMYC }
 
+class ItemModel {
+  final String period;
+  final String title;
+  final String subtitle;
+
+  const ItemModel({
+    required this.period,
+    required this.title,
+    required this.subtitle,
+  });
+}
+
 class ExperienceCard extends StatelessWidget {
   final Type type;
-  const ExperienceCard({super.key, required this.type});
+  final List<ItemModel> items;
+  const ExperienceCard({super.key, required this.type, required this.items});
+  final int MAX_ITEM = 3;
 
   @override
   Widget build(BuildContext context) {
@@ -14,26 +28,19 @@ class ExperienceCard extends StatelessWidget {
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10), color: Colors.white),
-      child: Column(children: [
-        Item(
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemCount: items.length > MAX_ITEM ? MAX_ITEM : items.length,
+        itemBuilder: (BuildContext context, int index) {
+          ItemModel item = items[index];
+          return Item(
             type: type,
-            period: '2019 - Present',
-            title: 'Academic Degree',
-            subtitle:
-                'Lorem ipsum dolor sit amet quo ei simul congue exerci ad nec admodum perfecto.'),
-        Item(
-            type: type,
-            period: '2019 - Present',
-            title: 'Academic Degree',
-            subtitle:
-                'Lorem ipsum dolor sit amet quo ei simul congue exerci ad nec admodum perfecto.'),
-        Item(
-            type: type,
-            period: '2019 - Present',
-            title: 'Academic Degree',
-            subtitle:
-                'Lorem ipsum dolor sit amet quo ei simul congue exerci ad nec admodum perfecto.'),
-      ]),
+            period: item.period,
+            title: item.title,
+            subtitle: item.subtitle,
+          );
+        },
+      ),
     );
   }
 }
