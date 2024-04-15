@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:porfolio/models/models.dart';
 import 'package:porfolio/providers/providers.dart';
+import 'package:porfolio/theme/app_theme.dart';
 import 'package:porfolio/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:porfolio/screens/utils.dart';
@@ -56,6 +57,7 @@ class DesktopContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final uiProvider = Provider.of<UiProvider>(context);
     final size = MediaQuery.of(context).size;
     final width = size.width - Constants.DRAWER_WIDTH;
     return Container(
@@ -111,6 +113,28 @@ class DesktopContainer extends StatelessWidget {
             },
           ),
           SizedBox(
+            height: 5,
+          ),
+          Visibility(
+            visible: !uiProvider.isSingleScreen,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
+              child: GestureDetector(
+                  onTap: () {
+                    uiProvider.isSingleScreen = true;
+                    uiProvider.selectedMenuOpt = 1;
+                  },
+                  child: Text(
+                    'See All',
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      color: AppTheme.primary,
+                      decoration: TextDecoration.underline,
+                    ),
+                  )),
+            ),
+          ),
+          SizedBox(
             height: 50,
           ),
         ],
@@ -132,6 +156,7 @@ class TabletContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final uiProvider = Provider.of<UiProvider>(context);
     final size = MediaQuery.of(context).size;
     final width = size.width;
     return Container(
@@ -187,6 +212,28 @@ class TabletContainer extends StatelessWidget {
             },
           ),
           SizedBox(
+            height: 5,
+          ),
+          Visibility(
+            visible: !uiProvider.isSingleScreen,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
+              child: GestureDetector(
+                  onTap: () {
+                    uiProvider.isSingleScreen = true;
+                    uiProvider.selectedMenuOpt = 1;
+                  },
+                  child: Text(
+                    'See All',
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      color: AppTheme.primary,
+                      decoration: TextDecoration.underline,
+                    ),
+                  )),
+            ),
+          ),
+          SizedBox(
             height: 50,
           ),
         ],
@@ -208,6 +255,7 @@ class MobileContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final uiProvider = Provider.of<UiProvider>(context);
     final size = MediaQuery.of(context).size;
     final width = size.width;
     return Container(
@@ -261,6 +309,28 @@ class MobileContainer extends StatelessWidget {
                 subtitle: project.attributes.description ?? '',
               );
             },
+          ),
+          SizedBox(
+            height: 5,
+          ),
+          Visibility(
+            visible: !uiProvider.isSingleScreen,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
+              child: GestureDetector(
+                  onTap: () {
+                    uiProvider.isSingleScreen = true;
+                    uiProvider.selectedMenuOpt = 1;
+                  },
+                  child: Text(
+                    'See All',
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      color: AppTheme.primary,
+                      decoration: TextDecoration.underline,
+                    ),
+                  )),
+            ),
           ),
           SizedBox(
             height: 50,
