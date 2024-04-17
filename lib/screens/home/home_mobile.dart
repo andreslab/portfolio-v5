@@ -35,11 +35,11 @@ class _HomeScreenBody extends StatelessWidget {
 
     switch (currentIndex) {
       case 0:
-        return ResumeMobileScreen();
+        return ResumeScreen();
       case 1:
-        return ProductsMobileScreen();
+        return ProductsScreen();
       default:
-        return ResumeMobileScreen();
+        return ResumeScreen();
     }
   }
 }
