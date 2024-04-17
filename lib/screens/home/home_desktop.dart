@@ -36,11 +36,11 @@ class _HomeScreenBody extends StatelessWidget {
 
     switch (currentIndex) {
       case 0:
-        return ResumeDesktopScreen();
+        return ResumeScreen();
       case 1:
-        return ProductsDesktopScreen();
+        return ProductsScreen();
       default:
-        return ResumeDesktopScreen();
+        return ResumeScreen();
     }
   }
 }
