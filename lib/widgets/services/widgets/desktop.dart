@@ -36,32 +36,36 @@ class Desktop extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Expanded(
+                  child: ServiceCard(
+                    title: 'Web',
+                    platform: Platform.desktop,
+                    backgroundColor: AppTheme.fifth,
+                    isDarkTheme: false,
+                  ),
+                ),
                 SizedBox(
-                    width: width * 0.3,
-                    height: height * 0.6,
-                    child: ServiceCard(
-                      platform: Platform.desktop,
-                      backgroundColor: AppTheme.fifth,
-                      isDarkTheme: false,
-                    )),
-                Spacer(),
+                  width: 20,
+                ),
+                Expanded(
+                  child: ServiceCard(
+                    title: 'Mobile',
+                    platform: Platform.desktop,
+                    backgroundColor: AppTheme.primary,
+                    isDarkTheme: true,
+                  ),
+                ),
                 SizedBox(
-                    width: width * 0.3,
-                    height: height * 0.6,
-                    child: ServiceCard(
-                      platform: Platform.desktop,
-                      backgroundColor: AppTheme.primary,
-                      isDarkTheme: true,
-                    )),
-                Spacer(),
-                SizedBox(
-                    width: width * 0.3,
-                    height: height * 0.6,
-                    child: ServiceCard(
-                      platform: Platform.desktop,
-                      backgroundColor: AppTheme.sixth,
-                      isDarkTheme: false,
-                    )),
+                  width: 20,
+                ),
+                Expanded(
+                  child: ServiceCard(
+                    title: 'Backend',
+                    platform: Platform.desktop,
+                    backgroundColor: AppTheme.sixth,
+                    isDarkTheme: false,
+                  ),
+                ),
               ],
             ),
           ),

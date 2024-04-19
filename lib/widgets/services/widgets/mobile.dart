@@ -41,6 +41,7 @@ class Mobile extends StatelessWidget {
                 SizedBox(
                     height: 100,
                     child: ServiceCard(
+                      title: "Web",
                       platform: Platform.mobile,
                       backgroundColor: AppTheme.fifth,
                       isDarkTheme: false,
@@ -51,6 +52,7 @@ class Mobile extends StatelessWidget {
                 SizedBox(
                     height: 100,
                     child: ServiceCard(
+                      title: "Mobile",
                       platform: Platform.mobile,
                       backgroundColor: AppTheme.primary,
                       isDarkTheme: true,
@@ -61,6 +63,7 @@ class Mobile extends StatelessWidget {
                 SizedBox(
                     height: 100,
                     child: ServiceCard(
+                      title: "Backend",
                       platform: Platform.mobile,
                       backgroundColor: AppTheme.sixth,
                       isDarkTheme: false,

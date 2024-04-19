@@ -41,6 +41,7 @@ class Tablet extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 ServiceCard(
+                  title: "Web",
                   platform: Platform.tablet,
                   backgroundColor: AppTheme.fifth,
                   isDarkTheme: false,
@@ -49,6 +50,7 @@ class Tablet extends StatelessWidget {
                   height: 10,
                 ),
                 ServiceCard(
+                  title: "Mobile",
                   platform: Platform.tablet,
                   backgroundColor: AppTheme.primary,
                   isDarkTheme: true,
@@ -57,6 +59,7 @@ class Tablet extends StatelessWidget {
                   height: 10,
                 ),
                 ServiceCard(
+                  title: "Backend",
                   platform: Platform.tablet,
                   backgroundColor: AppTheme.sixth,
                   isDarkTheme: false,
