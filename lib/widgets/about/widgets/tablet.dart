@@ -114,35 +114,35 @@ class Tablet extends StatelessWidget {
             ),
           ),
           Spacer(),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                CountService(
-                  detail: 'Detalle del servicio',
-                  value: 20,
-                ),
-                Spacer(),
-                CountService(
-                  detail: 'Detalle del servicio',
-                  value: 20,
-                ),
-                Spacer(),
-                CountService(
-                  detail: 'Detalle del servicio',
-                  value: 20,
-                ),
-                Spacer(),
-                CountService(
-                  detail: 'Detalle del servicio',
-                  value: 20,
-                ),
-              ],
-            ),
-          ),
-          Spacer(),
+          // Container(
+          //   padding: EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.center,
+          //     crossAxisAlignment: CrossAxisAlignment.center,
+          //     children: [
+          //       CountService(
+          //         detail: 'Detalle del servicio',
+          //         value: 20,
+          //       ),
+          //       Spacer(),
+          //       CountService(
+          //         detail: 'Detalle del servicio',
+          //         value: 20,
+          //       ),
+          //       Spacer(),
+          //       CountService(
+          //         detail: 'Detalle del servicio',
+          //         value: 20,
+          //       ),
+          //       Spacer(),
+          //       CountService(
+          //         detail: 'Detalle del servicio',
+          //         value: 20,
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          // Spacer(),
         ],
       ),
     );
