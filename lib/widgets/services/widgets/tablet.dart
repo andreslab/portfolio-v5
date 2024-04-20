@@ -16,7 +16,6 @@ class Tablet extends StatelessWidget {
     return SizedBox(
       width: width,
       height: height,
-      // decoration: BoxDecoration(color: AppTheme.primary),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -66,12 +65,14 @@ class Tablet extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 10,
+            height: 20,
           ),
           Center(
               child: Text(
             'Looking for a custom job? Click here to contact me!',
             style: Theme.of(context).textTheme.titleSmall,
+            textAlign: TextAlign.center,
+            maxLines: 3,
           )),
           Spacer()
         ],

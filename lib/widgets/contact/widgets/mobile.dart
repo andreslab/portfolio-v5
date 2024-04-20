@@ -12,7 +12,7 @@ class Mobile extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final width = size.width;
     const height = 500.0;
-    return Container(
+    return SizedBox(
       width: width,
       height: height,
       child: Column(

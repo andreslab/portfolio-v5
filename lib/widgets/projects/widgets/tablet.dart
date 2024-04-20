@@ -22,8 +22,8 @@ class Tablet extends StatelessWidget {
     final uiProvider = Provider.of<UiProvider>(context);
     final size = MediaQuery.of(context).size;
     final width = size.width;
-    const height = 550.0;
-    return Container(
+    const height = 600.0;
+    return SizedBox(
       width: width,
       height: height,
       child: Column(

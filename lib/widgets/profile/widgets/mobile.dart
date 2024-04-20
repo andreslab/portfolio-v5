@@ -19,7 +19,7 @@ class Mobile extends StatelessWidget {
     final width = size.width;
     final responsiveHeight = size.height;
     final height = responsiveHeight < minHeight ? minHeight : responsiveHeight;
-    return Container(
+    return SizedBox(
       width: width,
       height: height,
       child: Column(
