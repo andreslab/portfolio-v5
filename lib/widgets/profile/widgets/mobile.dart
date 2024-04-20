@@ -14,10 +14,12 @@ class Mobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const minHeight = 550.0;
     final size = MediaQuery.of(context).size;
     final width = size.width;
-    final height = size.height;
-    return Container(
+    final responsiveHeight = size.height;
+    final height = responsiveHeight < minHeight ? minHeight : responsiveHeight;
+    return SizedBox(
       width: width,
       height: height,
       child: Column(

@@ -15,11 +15,10 @@ class Mobile extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final width = size.width;
-    final height = size.height;
-    return Container(
+    const height = 600.0;
+    return SizedBox(
       width: width,
       height: height,
-      // decoration: BoxDecoration(color: AppTheme.primary),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -32,7 +31,9 @@ class Mobile extends StatelessWidget {
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
-          Spacer(),
+          SizedBox(
+            height: 20,
+          ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
             // width: width * 0.9,

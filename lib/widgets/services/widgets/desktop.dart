@@ -12,11 +12,10 @@ class Desktop extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final width = size.width - Constants.DRAWER_WIDTH;
-    final height = size.height * 0.4;
-    return Container(
+    const height = 550.0;
+    return SizedBox(
       width: width,
       height: height,
-      // decoration: BoxDecoration(color: AppTheme.primary),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -29,47 +28,57 @@ class Desktop extends StatelessWidget {
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
-          Spacer(),
+          SizedBox(
+            height: 20,
+          ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Expanded(
+                  child: ServiceCard(
+                    title: 'Web',
+                    platform: Platform.desktop,
+                    backgroundColor: AppTheme.fifth,
+                    isDarkTheme: false,
+                  ),
+                ),
                 SizedBox(
-                    width: width * 0.3,
-                    height: height * 0.6,
-                    child: ServiceCard(
-                      platform: Platform.desktop,
-                      backgroundColor: AppTheme.fifth,
-                      isDarkTheme: false,
-                    )),
-                Spacer(),
+                  width: 25,
+                ),
+                Expanded(
+                  child: ServiceCard(
+                    title: 'Mobile',
+                    platform: Platform.desktop,
+                    backgroundColor: AppTheme.primary,
+                    isDarkTheme: true,
+                  ),
+                ),
                 SizedBox(
-                    width: width * 0.3,
-                    height: height * 0.6,
-                    child: ServiceCard(
-                      platform: Platform.desktop,
-                      backgroundColor: AppTheme.primary,
-                      isDarkTheme: true,
-                    )),
-                Spacer(),
-                SizedBox(
-                    width: width * 0.3,
-                    height: height * 0.6,
-                    child: ServiceCard(
-                      platform: Platform.desktop,
-                      backgroundColor: AppTheme.sixth,
-                      isDarkTheme: false,
-                    )),
+                  width: 25,
+                ),
+                Expanded(
+                  child: ServiceCard(
+                    title: 'Backend',
+                    platform: Platform.desktop,
+                    backgroundColor: AppTheme.sixth,
+                    isDarkTheme: false,
+                  ),
+                ),
               ],
             ),
           ),
-          Spacer(),
+          SizedBox(
+            height: 20,
+          ),
           Center(
               child: Text(
             'Looking for a custom job? Click here to contact me!',
             style: Theme.of(context).textTheme.titleSmall,
+            textAlign: TextAlign.center,
+            maxLines: 3,
           )),
           Spacer(),
         ],

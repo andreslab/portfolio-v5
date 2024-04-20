@@ -12,17 +12,14 @@ class Tablet extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final width = size.width;
-    final height = size.height * 0.4;
-    return Container(
+    const height = 550.0;
+    return SizedBox(
       width: width,
       height: height,
-      // decoration: BoxDecoration(color: AppTheme.primary),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            height: 10,
-          ),
+          Spacer(),
           Padding(
             padding:
                 const EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
@@ -32,7 +29,7 @@ class Tablet extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 10,
+            height: 20,
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
@@ -41,6 +38,7 @@ class Tablet extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 ServiceCard(
+                  title: "Web",
                   platform: Platform.tablet,
                   backgroundColor: AppTheme.fifth,
                   isDarkTheme: false,
@@ -49,6 +47,7 @@ class Tablet extends StatelessWidget {
                   height: 10,
                 ),
                 ServiceCard(
+                  title: "Mobile",
                   platform: Platform.tablet,
                   backgroundColor: AppTheme.primary,
                   isDarkTheme: true,
@@ -57,6 +56,7 @@ class Tablet extends StatelessWidget {
                   height: 10,
                 ),
                 ServiceCard(
+                  title: "Backend",
                   platform: Platform.tablet,
                   backgroundColor: AppTheme.sixth,
                   isDarkTheme: false,
@@ -65,16 +65,16 @@ class Tablet extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 10,
+            height: 20,
           ),
           Center(
               child: Text(
             'Looking for a custom job? Click here to contact me!',
             style: Theme.of(context).textTheme.titleSmall,
+            textAlign: TextAlign.center,
+            maxLines: 3,
           )),
-          SizedBox(
-            height: 10,
-          ),
+          Spacer()
         ],
       ),
     );

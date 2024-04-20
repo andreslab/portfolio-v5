@@ -18,7 +18,8 @@ class ProjectCard extends StatelessWidget {
       ),
       elevation: 2, // Adjust elevation as needed
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(height: 5),
           Expanded(
@@ -30,7 +31,7 @@ class ProjectCard extends StatelessWidget {
               ),
               child: Image.asset(
                 'images/image-preview.png',
-                fit: BoxFit.fill,
+                fit: BoxFit.cover,
               ),
             ),
           ),

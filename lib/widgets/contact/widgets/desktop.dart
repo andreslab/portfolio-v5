@@ -11,8 +11,8 @@ class Desktop extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final width = size.width - Constants.DRAWER_WIDTH;
-    final height = size.height * 0.5;
-    return Container(
+    const height = 500.0;
+    return SizedBox(
       width: width,
       height: height,
       child: Column(
@@ -27,14 +27,23 @@ class Desktop extends StatelessWidget {
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
-          Row(
-            children: [
-              Expanded(child: ContactForm()),
-              Container(
-                width: width * 0.4,
-                child: Image.asset('images/image-preview.png'),
-              )
-            ],
+          SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(child: ContactForm()),
+                Image.asset(
+                  'images/image-preview.png',
+                  fit: BoxFit.cover,
+                )
+              ],
+            ),
           ),
           Spacer(),
         ],
