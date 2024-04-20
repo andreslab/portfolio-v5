@@ -12,8 +12,8 @@ class Mobile extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final width = size.width;
-    final height = size.height;
-    return Container(
+    final height = 550.0;
+    return SizedBox(
       width: width,
       height: height,
       // decoration: BoxDecoration(color: AppTheme.primary),
@@ -30,7 +30,7 @@ class Mobile extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 10,
+            height: 20,
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
@@ -39,7 +39,7 @@ class Mobile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                    height: 100,
+                    height: 120,
                     child: ServiceCard(
                       title: "Web",
                       platform: Platform.mobile,
@@ -50,7 +50,7 @@ class Mobile extends StatelessWidget {
                   height: 10,
                 ),
                 SizedBox(
-                    height: 100,
+                    height: 120,
                     child: ServiceCard(
                       title: "Mobile",
                       platform: Platform.mobile,
@@ -61,7 +61,7 @@ class Mobile extends StatelessWidget {
                   height: 10,
                 ),
                 SizedBox(
-                    height: 100,
+                    height: 120,
                     child: ServiceCard(
                       title: "Backend",
                       platform: Platform.mobile,
@@ -79,9 +79,7 @@ class Mobile extends StatelessWidget {
             'Looking for a custom job? Click here to contact me!',
             style: Theme.of(context).textTheme.titleSmall,
           )),
-          SizedBox(
-            height: 10,
-          ),
+          Spacer()
         ],
       ),
     );
