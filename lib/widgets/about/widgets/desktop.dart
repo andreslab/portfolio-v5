@@ -15,11 +15,10 @@ class Desktop extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final width = size.width - Constants.DRAWER_WIDTH;
-    final height = size.height * 0.4;
-    return Container(
+    const height = 400.0;
+    return SizedBox(
       width: width,
       height: height,
-      // decoration: BoxDecoration(color: AppTheme.primary),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

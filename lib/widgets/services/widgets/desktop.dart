@@ -12,11 +12,10 @@ class Desktop extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final width = size.width - Constants.DRAWER_WIDTH;
-    final height = size.height * 0.4;
-    return Container(
+    const height = 550.0;
+    return SizedBox(
       width: width,
       height: height,
-      // decoration: BoxDecoration(color: AppTheme.primary),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -29,7 +28,9 @@ class Desktop extends StatelessWidget {
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
-          Spacer(),
+          SizedBox(
+            height: 20,
+          ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
             child: Row(
@@ -45,7 +46,7 @@ class Desktop extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width: 20,
+                  width: 25,
                 ),
                 Expanded(
                   child: ServiceCard(
@@ -56,7 +57,7 @@ class Desktop extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width: 20,
+                  width: 25,
                 ),
                 Expanded(
                   child: ServiceCard(
@@ -69,11 +70,15 @@ class Desktop extends StatelessWidget {
               ],
             ),
           ),
-          Spacer(),
+          SizedBox(
+            height: 20,
+          ),
           Center(
               child: Text(
             'Looking for a custom job? Click here to contact me!',
             style: Theme.of(context).textTheme.titleSmall,
+            textAlign: TextAlign.center,
+            maxLines: 3,
           )),
           Spacer(),
         ],

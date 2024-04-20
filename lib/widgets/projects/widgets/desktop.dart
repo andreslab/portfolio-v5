@@ -21,15 +21,16 @@ class Desktop extends StatelessWidget {
     final uiProvider = Provider.of<UiProvider>(context);
     final size = MediaQuery.of(context).size;
     final width = size.width - Constants.DRAWER_WIDTH;
-    return Container(
+    const minHeight = 550.0;
+    final responsiveHeight = size.height * 0.7;
+    final height = responsiveHeight < minHeight ? minHeight : responsiveHeight;
+    return SizedBox(
       width: width,
-      // decoration: BoxDecoration(color: AppTheme.primary),
+      height: height,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            height: 10,
-          ),
+          Spacer(),
           Padding(
             padding:
                 const EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
@@ -39,7 +40,7 @@ class Desktop extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 50,
+            height: 20,
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
@@ -54,7 +55,7 @@ class Desktop extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 10,
+            height: 20,
           ),
           GridView.builder(
             padding: EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
@@ -74,7 +75,7 @@ class Desktop extends StatelessWidget {
             },
           ),
           SizedBox(
-            height: 5,
+            height: 10,
           ),
           Visibility(
             visible: !uiProvider.isSingleScreen,
@@ -95,9 +96,7 @@ class Desktop extends StatelessWidget {
                   )),
             ),
           ),
-          SizedBox(
-            height: 50,
-          ),
+          Spacer(),
         ],
       ),
     );

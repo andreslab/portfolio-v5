@@ -16,10 +16,15 @@ class Desktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const minHeight = 500.0;
     final size = MediaQuery.of(context).size;
     final width = size.width - Constants.DRAWER_WIDTH;
-    final height = size.height * 0.6;
-    return Container(
+    const minHeightScreenForFullScreen = 1000.0;
+    final isFullScreen = minHeightScreenForFullScreen >
+        size.height; //full screen or share with about
+    final responsiveHeight = size.height * 0.6;
+    final height = isFullScreen ? size.height : responsiveHeight;
+    return SizedBox(
       width: width,
       height: height,
       child: Column(
