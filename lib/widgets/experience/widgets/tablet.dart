@@ -14,14 +14,17 @@ class Tablet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const minHeight = 700.0;
     final size = MediaQuery.of(context).size;
     final width = size.width;
-    final height = size.height;
-    return Container(
+    final responsiveHeight = size.height * 0.7;
+    final height = responsiveHeight < minHeight ? minHeight : responsiveHeight;
+    return SizedBox(
       width: width,
       height: height,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Spacer(),
           Padding(
@@ -32,7 +35,9 @@ class Tablet extends StatelessWidget {
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
-          Spacer(),
+          SizedBox(
+            height: 20,
+          ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
             child: ExperienceCard(

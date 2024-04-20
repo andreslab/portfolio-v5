@@ -12,17 +12,15 @@ class Tablet extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final width = size.width;
-    final height = size.height * 0.4;
-    return Container(
+    const height = 550.0;
+    return SizedBox(
       width: width,
       height: height,
       // decoration: BoxDecoration(color: AppTheme.primary),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            height: 10,
-          ),
+          Spacer(),
           Padding(
             padding:
                 const EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
@@ -32,7 +30,7 @@ class Tablet extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 10,
+            height: 20,
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
@@ -75,9 +73,7 @@ class Tablet extends StatelessWidget {
             'Looking for a custom job? Click here to contact me!',
             style: Theme.of(context).textTheme.titleSmall,
           )),
-          SizedBox(
-            height: 10,
-          ),
+          Spacer()
         ],
       ),
     );

@@ -14,9 +14,11 @@ class Tablet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const minHeight = 550.0;
     final size = MediaQuery.of(context).size;
     final width = size.width;
-    final height = size.height * 0.6;
+    final responsiveHeight = size.height;
+    final height = responsiveHeight < minHeight ? minHeight : responsiveHeight;
     return Container(
       width: width,
       height: height,
