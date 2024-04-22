@@ -11,25 +11,13 @@ class Tablet extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final width = size.width;
-    const height = 500.0;
+    const height = 450.0;
     return SizedBox(
       width: width,
       height: height,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Spacer(),
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
-            child: Text(
-              'Get in touch',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
           Padding(
             padding:
                 const EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),

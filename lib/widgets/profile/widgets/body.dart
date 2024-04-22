@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:porfolio/models/models.dart';
 import 'package:porfolio/providers/providers.dart';
+import 'package:porfolio/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:porfolio/screens/utils.dart';
 
@@ -15,7 +17,18 @@ class Body extends StatelessWidget {
     final personalProvider = Provider.of<ProfileProvider>(context);
     final personal = personalProvider.personal.data?.attributes;
     final uiProvider = Provider.of<UiProvider>(context);
-    switch (uiProvider.pratform) {
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        TitleWithKey(key: uiProvider.profileKey, title: ''),
+        _buildPlatformWidget(uiProvider.pratform, personal!),
+      ],
+    );
+  }
+
+  Widget _buildPlatformWidget(Platform platform, PersonalAttributes personal) {
+    switch (platform) {
       case Platform.desktop:
         return Desktop(
           personalData: personal,
