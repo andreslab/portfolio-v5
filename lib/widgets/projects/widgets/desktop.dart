@@ -21,7 +21,7 @@ class Desktop extends StatelessWidget {
     final uiProvider = Provider.of<UiProvider>(context);
     final size = MediaQuery.of(context).size;
     final width = size.width - Constants.DRAWER_WIDTH;
-    const minHeight = 550.0;
+    const minHeight = 500.0;
     final responsiveHeight = size.height * 0.7;
     final height = responsiveHeight < minHeight ? minHeight : responsiveHeight;
     return SizedBox(
@@ -30,18 +30,6 @@ class Desktop extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Spacer(),
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
-            child: Text(
-              'Projects',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
             height: 50,

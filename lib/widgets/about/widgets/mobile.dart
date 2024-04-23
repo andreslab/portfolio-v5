@@ -15,28 +15,15 @@ class Mobile extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final width = size.width;
-    const height = 600.0;
+    const height = 550.0;
     return SizedBox(
       width: width,
       height: height,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Spacer(),
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
-            child: Text(
-              'About Me',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
-            // width: width * 0.9,
             child: Expanded(
               child: Card(
                 elevation: 5,

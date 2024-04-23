@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:porfolio/models/models.dart';
 import 'package:porfolio/providers/providers.dart';
+import 'package:porfolio/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:porfolio/screens/utils.dart';
 
@@ -19,7 +21,21 @@ class Body extends StatelessWidget {
     final categoryProvider = Provider.of<CategoryProvider>(context);
     final categories = categoryProvider.categories;
     final uiProvider = Provider.of<UiProvider>(context);
-    switch (uiProvider.pratform) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        TitleWithKey(key: uiProvider.projectsKey, title: 'Projects'),
+        SizedBox(
+          height: 20,
+        ),
+        _buildPlatformWidget(uiProvider.pratform, projects, categories),
+      ],
+    );
+  }
+
+  Widget _buildPlatformWidget(
+      Platform platform, Project projects, Category categories) {
+    switch (platform) {
       case Platform.desktop:
         return Desktop(
           projects: projects,

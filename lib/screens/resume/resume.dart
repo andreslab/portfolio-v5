@@ -10,6 +10,7 @@ class ResumeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final uiProvider = Provider.of<UiProvider>(context);
     return SingleChildScrollView(
+      controller: uiProvider.scrollControllerMain,
       child: Column(
         children: [
           Profile(),
