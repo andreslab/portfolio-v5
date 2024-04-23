@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:porfolio/models/models.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:porfolio/providers/constants.dart';
 
 class CategoryProvider extends ChangeNotifier {
-  final String? _baseUrl = dotenv.get('BASE_URL', fallback: '0.0.0.0:3000');
-
   Category categories = Category(data: []);
 
   CategoryProvider() {
@@ -14,7 +12,7 @@ class CategoryProvider extends ChangeNotifier {
 
   getCategory() async {
     try {
-      var url = Uri.parse('$_baseUrl/categories');
+      var url = Uri.parse('${Environment.apiUrl}/categories');
       final response = await http.get(url);
 
       if (response.statusCode == 200) {

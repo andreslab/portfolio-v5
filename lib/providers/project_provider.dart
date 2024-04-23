@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:porfolio/models/project.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:porfolio/providers/constants.dart';
 
 class ProjectProvider extends ChangeNotifier {
-  final String? _baseUrl = dotenv.get('BASE_URL', fallback: '0.0.0.0:3000');
-
   Project projects = Project(data: []);
 
   ProjectProvider() {
@@ -14,7 +12,7 @@ class ProjectProvider extends ChangeNotifier {
 
   getProjects() async {
     try {
-      var url = Uri.parse('$_baseUrl/projects');
+      var url = Uri.parse('${Environment.apiUrl}/projects');
       final response = await http.get(url);
 
       if (response.statusCode == 200) {
@@ -31,7 +29,7 @@ class ProjectProvider extends ChangeNotifier {
 
   getPrimeProjects() async {
     try {
-      var url = Uri.parse('$_baseUrl/projects/prime');
+      var url = Uri.parse('${Environment.apiUrl}/projects/prime');
       final response = await http.get(url);
 
       if (response.statusCode == 200) {

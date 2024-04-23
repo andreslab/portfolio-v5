@@ -1,0 +1,42 @@
+name: Deploy Porfolio
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          # flutter-version: 3.19.0
+          flutter-version-file: pubspec.yaml # path to pubspec.yaml
+      - run: flutter --version
+
+      - name: Enable Flutter Web
+        run: flutter config --enable-web
+
+      # - name: Run Tests
+        # run: flutter test
+
+      - name: Download Dependencies
+        run: flutter pub get
+
+      - name: Build
+        run: flutter build web
+
+      - name: Deploy to AWS
+        uses: onramper/action-deploy-aws-static-site@v3.2.0
+        with:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          domain: andreslab.com
+          publish_dir: ./build/web

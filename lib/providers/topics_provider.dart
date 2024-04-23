@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:porfolio/models/topic.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:porfolio/providers/constants.dart';
 
 class TopicsProvider extends ChangeNotifier {
-  final String? _baseUrl = dotenv.get('BASE_URL', fallback: '0.0.0.0:3000');
-
   Topic topics = Topic(data: []);
 
   TopicsProvider() {
@@ -14,7 +12,7 @@ class TopicsProvider extends ChangeNotifier {
 
   getTopics() async {
     try {
-      var url = Uri.parse('$_baseUrl/contacts');
+      var url = Uri.parse('${Environment.apiUrl}/contacts');
       final response = await http.get(url);
 
       if (response.statusCode == 200) {

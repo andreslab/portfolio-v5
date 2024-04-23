@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:porfolio/models/job.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:porfolio/providers/constants.dart';
 
 class JobProvider extends ChangeNotifier {
-  final String? _baseUrl = dotenv.get('BASE_URL', fallback: '0.0.0.0:3000');
-
   Job jobs = Job(data: []);
 
   JobProvider() {
@@ -14,7 +12,7 @@ class JobProvider extends ChangeNotifier {
 
   getJobs() async {
     try {
-      var url = Uri.parse('$_baseUrl/jobs');
+      var url = Uri.parse('${Environment.apiUrl}/jobs');
       final response = await http.get(url);
 
       if (response.statusCode == 200) {
