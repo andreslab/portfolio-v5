@@ -38,7 +38,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   font_awesome_flutter: ^10.4.0
   http: ^0.13.6
-  flutter_dotenv: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -67,7 +66,6 @@ assets:
   - gifs/icons8-double-down.gif
   - images/image-preview.png
   - iamges/me.jpg
-  - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

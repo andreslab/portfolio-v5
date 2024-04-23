@@ -3,12 +3,8 @@ import 'package:porfolio/responsive/responsive.dart';
 import 'package:provider/provider.dart';
 import 'package:porfolio/providers/providers.dart';
 import 'package:porfolio/theme/app_theme.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-Future main() async {
-  await dotenv.load(fileName: ".env");
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -40,7 +36,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'digital menu',
+        title: 'Porfolio',
         initialRoute: 'home',
         routes: {
           'home': (_) => ResponseLayout(

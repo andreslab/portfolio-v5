@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:porfolio/models/project.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:porfolio/providers/constants.dart';
 
 class ProjectProvider extends ChangeNotifier {
-  final String? _baseUrl = dotenv.get('BASE_URL', fallback: '0.0.0.0:3000');
+  final String? _baseUrl = Environment.API_URL;
 
   Project projects = Project(data: []);
 
