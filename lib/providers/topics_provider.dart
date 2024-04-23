@@ -4,8 +4,6 @@ import 'package:porfolio/models/topic.dart';
 import 'package:porfolio/providers/constants.dart';
 
 class TopicsProvider extends ChangeNotifier {
-  final String? _baseUrl = Environment.API_URL;
-
   Topic topics = Topic(data: []);
 
   TopicsProvider() {
@@ -14,7 +12,7 @@ class TopicsProvider extends ChangeNotifier {
 
   getTopics() async {
     try {
-      var url = Uri.parse('$_baseUrl/contacts');
+      var url = Uri.parse('${Environment.apiUrl}/contacts');
       final response = await http.get(url);
 
       if (response.statusCode == 200) {

@@ -4,8 +4,6 @@ import 'package:porfolio/models/models.dart';
 import 'package:porfolio/providers/constants.dart';
 
 class CategoryProvider extends ChangeNotifier {
-  final String? _baseUrl = Environment.API_URL;
-
   Category categories = Category(data: []);
 
   CategoryProvider() {
@@ -14,7 +12,7 @@ class CategoryProvider extends ChangeNotifier {
 
   getCategory() async {
     try {
-      var url = Uri.parse('$_baseUrl/categories');
+      var url = Uri.parse('${Environment.apiUrl}/categories');
       final response = await http.get(url);
 
       if (response.statusCode == 200) {

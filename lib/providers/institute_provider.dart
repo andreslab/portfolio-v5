@@ -4,8 +4,6 @@ import 'package:porfolio/models/models.dart';
 import 'package:porfolio/providers/constants.dart';
 
 class InstituteProvider extends ChangeNotifier {
-  final String? _baseUrl = Environment.API_URL;
-
   Institute institutes = Institute(data: []);
 
   InstituteProvider() {
@@ -14,7 +12,7 @@ class InstituteProvider extends ChangeNotifier {
 
   getAcademics() async {
     try {
-      var url = Uri.parse('$_baseUrl/institutes');
+      var url = Uri.parse('${Environment.apiUrl}/institutes');
       final response = await http.get(url);
 
       if (response.statusCode == 200) {

@@ -4,8 +4,6 @@ import 'package:porfolio/models/job.dart';
 import 'package:porfolio/providers/constants.dart';
 
 class JobProvider extends ChangeNotifier {
-  final String? _baseUrl = Environment.API_URL;
-
   Job jobs = Job(data: []);
 
   JobProvider() {
@@ -14,7 +12,7 @@ class JobProvider extends ChangeNotifier {
 
   getJobs() async {
     try {
-      var url = Uri.parse('$_baseUrl/jobs');
+      var url = Uri.parse('${Environment.apiUrl}/jobs');
       final response = await http.get(url);
 
       if (response.statusCode == 200) {

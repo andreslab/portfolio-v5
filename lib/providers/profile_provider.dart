@@ -4,8 +4,6 @@ import 'package:porfolio/models/personal.dart';
 import 'package:porfolio/providers/constants.dart';
 
 class ProfileProvider extends ChangeNotifier {
-  final String? _baseUrl = Environment.API_URL;
-
   Personal personal = Personal();
 
   ProfileProvider() {
@@ -14,7 +12,7 @@ class ProfileProvider extends ChangeNotifier {
 
   Future<void> getOnUserDataDisplay() async {
     try {
-      var url = Uri.parse('$_baseUrl/personal');
+      var url = Uri.parse('${Environment.apiUrl}/personal');
       final response = await http.get(url);
 
       if (response.statusCode == 200) {
