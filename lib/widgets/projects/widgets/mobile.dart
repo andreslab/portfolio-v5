@@ -49,8 +49,8 @@ class Mobile extends StatelessWidget {
             shrinkWrap: true,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 1, // Número de columnas en el grid
-              crossAxisSpacing: 10.0, // Espacio horizontal entre los elementos
-              mainAxisSpacing: 10.0, // Espacio vertical entre los elementos
+              crossAxisSpacing: 0.0, // Espacio horizontal entre los elementos
+              mainAxisSpacing: 0.0, // Espacio vertical entre los elementos
             ),
             itemCount: projects.data.length,
             itemBuilder: (BuildContext context, int index) {
