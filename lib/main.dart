@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
           create: (_) => InstituteProvider(),
         ),
         ChangeNotifierProvider(
-          create: (_) => TopicsProvider(),
+          create: (_) => ContactProvider(),
         ),
         ChangeNotifierProvider(
           create: (_) => JobProvider(),

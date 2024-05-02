@@ -24,9 +24,9 @@ class _ContactFormState extends State<ContactForm> {
 
   @override
   Widget build(BuildContext context) {
-    final topicProvider = Provider.of<TopicsProvider>(context);
+    final contactProvider = Provider.of<ContactProvider>(context);
     final topics =
-        topicProvider.topics.data.map((e) => e.attributes.subject).toList();
+        contactProvider.topics.data.map((e) => e.attributes.subject).toList();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -79,6 +79,7 @@ class _ContactFormState extends State<ContactForm> {
             print('Title: $title');
             print('Email: $email');
             print('Content: $content');
+            contactProvider.sendMessage(title, email, content);
           },
           child: Text(
             'Submit',
