@@ -4,7 +4,7 @@ import 'package:porfolio/models/project.dart';
 import 'package:porfolio/providers/constants.dart';
 
 class ProjectProvider extends ChangeNotifier {
-  Project projects = Project(data: []);
+  List<Project> projects = [];
 
   ProjectProvider() {
     getPrimeProjects();
@@ -17,7 +17,7 @@ class ProjectProvider extends ChangeNotifier {
 
       if (response.statusCode == 200) {
         print('Response projects: ${response.body}');
-        projects = projectFromJson(response.body);
+        projects.addAll(projectFromJson(response.body));
         notifyListeners();
       } else {
         print('Failed to fetch data: ${response.statusCode}');

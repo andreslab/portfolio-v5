@@ -11,6 +11,6 @@ export 'package:porfolio/widgets/custom_navigationbar.dart';
 export 'package:porfolio/widgets/about/about.dart';
 export 'package:porfolio/widgets/contact/contact.dart';
 export 'package:porfolio/widgets/experience/experience.dart';
-export 'package:porfolio/widgets/profile/profile.dart';
+export 'package:porfolio/widgets/account/account.dart';
 export 'package:porfolio/widgets/projects/projects.dart';
 export 'package:porfolio/widgets/services/services.dart';

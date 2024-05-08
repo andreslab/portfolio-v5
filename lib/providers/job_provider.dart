@@ -4,7 +4,7 @@ import 'package:porfolio/models/job.dart';
 import 'package:porfolio/providers/constants.dart';
 
 class JobProvider extends ChangeNotifier {
-  Job jobs = Job(data: []);
+  List<Job> jobs = [];
 
   JobProvider() {
     getJobs();
@@ -17,7 +17,7 @@ class JobProvider extends ChangeNotifier {
 
       if (response.statusCode == 200) {
         print('Response jobs: ${response.body}');
-        jobs = jobFromJson(response.body);
+        jobs.addAll(jobFromJson(response.body));
         notifyListeners();
       } else {
         print('Failed to fetch data: ${response.statusCode}');

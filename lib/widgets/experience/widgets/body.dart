@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:porfolio/models/institute.dart';
+import 'package:porfolio/models/study.dart';
 import 'package:porfolio/models/job.dart';
 import 'package:porfolio/providers/providers.dart';
 import 'package:porfolio/widgets/widgets.dart';
@@ -37,7 +37,7 @@ class Body extends StatelessWidget {
   }
 
   Widget _buildPlatformWidget(
-      Platform platform, Job jobs, Institute institutes) {
+      Platform platform, List<Job> jobs, List<Study> institutes) {
     switch (platform) {
       case Platform.desktop:
         return Desktop(

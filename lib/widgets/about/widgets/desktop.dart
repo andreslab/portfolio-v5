@@ -5,10 +5,10 @@ import 'package:porfolio/screens/utils.dart';
 import 'package:porfolio/models/models.dart';
 
 class Desktop extends StatelessWidget {
-  final Personal personalData;
+  final Profile profileData;
   const Desktop({
     super.key,
-    required this.personalData,
+    required this.profileData,
   });
 
   @override

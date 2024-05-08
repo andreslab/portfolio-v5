@@ -1,35 +1,39 @@
 // To parse this JSON data, do
 //
-//     final topic = topicFromJson(jsonString);
+//     final skill = skillFromJson(jsonString);
 
 import 'dart:convert';
 
-List<Topic> topicFromJson(String str) =>
-    List<Topic>.from(json.decode(str).map((x) => Topic.fromJson(x)));
+List<Skill> skillFromJson(String str) =>
+    List<Skill>.from(json.decode(str).map((x) => Skill.fromJson(x)));
 
-String topicToJson(List<Topic> data) =>
+String skillToJson(List<Skill> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class Topic {
+class Skill {
   String id;
   String title;
+  String category;
   int v;
 
-  Topic({
+  Skill({
     required this.id,
     required this.title,
+    required this.category,
     required this.v,
   });
 
-  factory Topic.fromJson(Map<String, dynamic> json) => Topic(
+  factory Skill.fromJson(Map<String, dynamic> json) => Skill(
         id: json["_id"],
         title: json["title"],
+        category: json["category"],
         v: json["__v"],
       );
 
   Map<String, dynamic> toJson() => {
         "_id": id,
         "title": title,
+        "category": category,
         "__v": v,
       };
 }

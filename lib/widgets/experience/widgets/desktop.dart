@@ -4,8 +4,8 @@ import 'package:porfolio/widgets/widgets.dart';
 import 'package:porfolio/screens/utils.dart';
 
 class Desktop extends StatelessWidget {
-  final Institute institutes;
-  final Job jobs;
+  final List<Study> institutes;
+  final List<Job> jobs;
   const Desktop({
     super.key,
     required this.institutes,
@@ -33,11 +33,11 @@ class Desktop extends StatelessWidget {
                     width: width * 0.45,
                     child: ExperienceCard(
                       type: Type.JOB,
-                      items: jobs.data
+                      items: jobs
                           .map((e) => ItemModel(
                               period: '2024',
-                              title: e.attributes.company,
-                              subtitle: e.attributes.description))
+                              title: e.company,
+                              subtitle: e.description))
                           .toList(),
                     )),
                 Spacer(),
@@ -45,11 +45,11 @@ class Desktop extends StatelessWidget {
                     width: width * 0.45,
                     child: ExperienceCard(
                       type: Type.ACADEMYC,
-                      items: institutes.data
+                      items: institutes
                           .map((e) => ItemModel(
                               period: '2024',
-                              title: e.attributes.name,
-                              subtitle: e.attributes.career))
+                              title: e.institute,
+                              subtitle: e.title))
                           .toList(),
                     )),
               ],
