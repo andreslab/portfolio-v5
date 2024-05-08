@@ -6,10 +6,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:porfolio/models/models.dart';
 
 class Mobile extends StatelessWidget {
-  final PersonalAttributes? personalData;
+  final Profile? profileData;
   const Mobile({
     super.key,
-    required this.personalData,
+    required this.profileData,
   });
 
   @override
@@ -33,14 +33,14 @@ class Mobile extends StatelessWidget {
             height: 10,
           ),
           Text(
-            '${personalData?.name}',
+            '${profileData?.name}',
             style: Theme.of(context).textTheme.titleLarge,
           ),
           SizedBox(
             height: 10,
           ),
           Text(
-            '${personalData?.role}',
+            '${profileData?.role}',
             style: Theme.of(context).textTheme.titleSmall,
           ),
           SizedBox(

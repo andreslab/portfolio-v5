@@ -34,7 +34,7 @@ class Body extends StatelessWidget {
   }
 
   Widget _buildPlatformWidget(
-      Platform platform, Project projects, Category categories) {
+      Platform platform, List<Project> projects, List<Category> categories) {
     switch (platform) {
       case Platform.desktop:
         return Desktop(

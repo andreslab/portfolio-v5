@@ -5,10 +5,10 @@ import 'package:porfolio/widgets/widgets.dart';
 import 'package:porfolio/screens/utils.dart';
 
 class Tablet extends StatelessWidget {
-  final Personal personalData;
+  final Profile profileData;
   const Tablet({
     super.key,
-    required this.personalData,
+    required this.profileData,
   });
 
   @override

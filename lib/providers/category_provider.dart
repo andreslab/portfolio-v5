@@ -4,7 +4,7 @@ import 'package:porfolio/models/models.dart';
 import 'package:porfolio/providers/constants.dart';
 
 class CategoryProvider extends ChangeNotifier {
-  Category categories = Category(data: []);
+  List<Category> categories = [];
 
   CategoryProvider() {
     getCategory();
@@ -17,7 +17,7 @@ class CategoryProvider extends ChangeNotifier {
 
       if (response.statusCode == 200) {
         print('Response categories: ${response.body}');
-        categories = categoryFromJson(response.body);
+        categories.addAll(categoryFromJson(response.body));
         notifyListeners();
       } else {
         print('Failed to fetch data: ${response.statusCode}');

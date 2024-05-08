@@ -5,7 +5,7 @@ import 'package:porfolio/providers/constants.dart';
 import 'dart:convert';
 
 class ContactProvider extends ChangeNotifier {
-  Topic topics = Topic(data: []);
+  List<Topic> topics = [];
 
   ContactProvider() {
     getTopics();
@@ -13,12 +13,12 @@ class ContactProvider extends ChangeNotifier {
 
   getTopics() async {
     try {
-      var url = Uri.parse('${Environment.apiUrl}/contacts');
+      var url = Uri.parse('${Environment.apiUrl}/topics');
       final response = await http.get(url);
 
       if (response.statusCode == 200) {
         print('Response topics: ${response.body}');
-        topics = topicFromJson(response.body);
+        topics.addAll(topicFromJson(response.body));
         notifyListeners();
       } else {
         print('Failed to fetch data: ${response.statusCode}');

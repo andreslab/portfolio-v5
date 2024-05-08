@@ -13,7 +13,7 @@ class ResumeScreen extends StatelessWidget {
       controller: uiProvider.scrollControllerMain,
       child: Column(
         children: [
-          Profile(),
+          Account(),
           About(),
           Services(),
           Experience(),

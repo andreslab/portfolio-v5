@@ -7,8 +7,8 @@ import 'package:provider/provider.dart';
 import 'package:porfolio/screens/utils.dart';
 
 class Desktop extends StatelessWidget {
-  final Project projects;
-  final Category categories;
+  final List<Project> projects;
+  final List<Category> categories;
 
   Desktop({
     super.key,
@@ -35,9 +35,9 @@ class Desktop extends StatelessWidget {
             height: 50,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: categories.data.length,
+              itemCount: categories.length,
               itemBuilder: (context, index) {
-                String title = categories.data[index].attributes.name;
+                String title = categories[index].name;
                 return FilterItem(title: title);
               },
             ),
@@ -53,12 +53,12 @@ class Desktop extends StatelessWidget {
               crossAxisSpacing: 10.0, // Espacio horizontal entre los elementos
               mainAxisSpacing: 10.0, // Espacio vertical entre los elementos
             ),
-            itemCount: projects.data.length,
+            itemCount: projects.length,
             itemBuilder: (BuildContext context, int index) {
-              ProjectDatum project = projects.data[index];
+              Project project = projects[index];
               return ProjectCard(
-                title: project.attributes.title,
-                subtitle: project.attributes.description ?? '',
+                title: project.title,
+                subtitle: project.description ?? '',
               );
             },
           ),

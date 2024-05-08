@@ -8,8 +8,8 @@ import 'package:porfolio/screens/utils.dart';
 
 class Mobile extends StatelessWidget {
   final List<String> items = List.generate(1, (index) => 'Item ${index + 1}');
-  final Project projects;
-  final Category categories;
+  final List<Project> projects;
+  final List<Category> categories;
 
   Mobile({
     super.key,
@@ -34,9 +34,9 @@ class Mobile extends StatelessWidget {
             height: 50,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: categories.data.length,
+              itemCount: categories.length,
               itemBuilder: (context, index) {
-                String title = categories.data[index].attributes.name;
+                String title = categories[index].name;
                 return FilterItem(title: title);
               },
             ),
@@ -52,12 +52,12 @@ class Mobile extends StatelessWidget {
               crossAxisSpacing: 0.0, // Espacio horizontal entre los elementos
               mainAxisSpacing: 0.0, // Espacio vertical entre los elementos
             ),
-            itemCount: projects.data.length,
+            itemCount: projects.length,
             itemBuilder: (BuildContext context, int index) {
-              ProjectDatum project = projects.data[index];
+              Project project = projects[index];
               return ProjectCard(
-                title: project.attributes.title,
-                subtitle: project.attributes.description ?? '',
+                title: project.title,
+                subtitle: project.description ?? '',
               );
             },
           ),

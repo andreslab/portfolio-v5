@@ -32,23 +32,23 @@ class Body extends StatelessWidget {
     );
   }
 
-  Widget _buildPlatformWidget(Platform platform, Personal personal) {
+  Widget _buildPlatformWidget(Platform platform, Profile personal) {
     switch (platform) {
       case Platform.desktop:
         return Desktop(
-          personalData: personal,
+          profileData: personal,
         );
       case Platform.tablet:
         return Tablet(
-          personalData: personal,
+          profileData: personal,
         );
       case Platform.mobile:
         return Mobile(
-          personalData: personal,
+          profileData: personal,
         );
       default:
         return Desktop(
-          personalData: personal,
+          profileData: personal,
         );
     }
   }

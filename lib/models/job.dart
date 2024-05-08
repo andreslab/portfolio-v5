@@ -4,57 +4,48 @@
 
 import 'dart:convert';
 
-Job jobFromJson(String str) => Job.fromJson(json.decode(str));
+List<Job> jobFromJson(String str) =>
+    List<Job>.from(json.decode(str).map((x) => Job.fromJson(x)));
+
+String jobToJson(List<Job> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Job {
-  List<JobDatum> data;
-
-  Job({
-    required this.data,
-  });
-
-  factory Job.fromJson(Map<String, dynamic> json) => Job(
-        data:
-            List<JobDatum>.from(json["data"].map((x) => JobDatum.fromJson(x))),
-      );
-}
-
-class JobDatum {
-  int id;
-  JobAttributes attributes;
-
-  JobDatum({
-    required this.id,
-    required this.attributes,
-  });
-
-  factory JobDatum.fromJson(Map<String, dynamic> json) => JobDatum(
-        id: json["id"],
-        attributes: JobAttributes.fromJson(json["attributes"]),
-      );
-}
-
-class JobAttributes {
+  String id;
   String company;
   String role;
-  DateTime startDate;
-  DateTime? endDate;
+  String startDate;
+  String endDate;
   String description;
+  int v;
 
-  JobAttributes({
+  Job({
+    required this.id,
     required this.company,
     required this.role,
     required this.startDate,
-    this.endDate,
+    required this.endDate,
     required this.description,
+    required this.v,
   });
 
-  factory JobAttributes.fromJson(Map<String, dynamic> json) => JobAttributes(
+  factory Job.fromJson(Map<String, dynamic> json) => Job(
+        id: json["_id"],
         company: json["company"],
         role: json["role"],
-        startDate: DateTime.parse(json["startDate"]),
-        endDate:
-            json["endDate"] != null ? DateTime.parse(json["endDate"]) : null,
+        startDate: json["startDate"],
+        endDate: json["endDate"],
         description: json["description"],
+        v: json["__v"],
       );
+
+  Map<String, dynamic> toJson() => {
+        "_id": id,
+        "company": company,
+        "role": role,
+        "startDate": startDate,
+        "endDate": endDate,
+        "description": description,
+        "__v": v,
+      };
 }

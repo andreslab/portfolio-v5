@@ -4,7 +4,7 @@ import 'package:porfolio/models/models.dart';
 import 'package:porfolio/providers/constants.dart';
 
 class InstituteProvider extends ChangeNotifier {
-  Institute institutes = Institute(data: []);
+  List<Study> institutes = [];
 
   InstituteProvider() {
     getAcademics();
@@ -12,12 +12,12 @@ class InstituteProvider extends ChangeNotifier {
 
   getAcademics() async {
     try {
-      var url = Uri.parse('${Environment.apiUrl}/institutes');
+      var url = Uri.parse('${Environment.apiUrl}/studies');
       final response = await http.get(url);
 
       if (response.statusCode == 200) {
         print('Response institute: ${response.body}');
-        institutes = instituteFromJson(response.body);
+        institutes.addAll(studyFromJson(response.body));
         notifyListeners();
       } else {
         print('Failed to fetch data: ${response.statusCode}');

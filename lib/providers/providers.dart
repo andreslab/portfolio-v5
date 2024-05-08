@@ -1,3 +1,4 @@
+export 'package:porfolio/providers/skill_provider.dart';
 export 'package:porfolio/providers/category_provider.dart';
 export 'package:porfolio/providers/institute_provider.dart';
 export 'package:porfolio/providers/contact_provider.dart';

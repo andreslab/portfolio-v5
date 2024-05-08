@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:porfolio/widgets/profile/widgets/body.dart';
+import 'package:porfolio/widgets/account/widgets/body.dart';
 
-class Profile extends StatelessWidget {
-  const Profile({
+class Account extends StatelessWidget {
+  const Account({
     super.key,
   });
 

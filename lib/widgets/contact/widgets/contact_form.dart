@@ -12,7 +12,13 @@ class _ContactFormState extends State<ContactForm> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _contentController = TextEditingController();
-  String dropdownValue = 'Make a job offer';
+  late String dropdownValue;
+
+  @override
+  void initState() {
+    super.initState();
+    dropdownValue = 'Make a job offer';
+  }
 
   @override
   void dispose() {
@@ -23,10 +29,22 @@ class _ContactFormState extends State<ContactForm> {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final contactProvider = Provider.of<ContactProvider>(context);
+    final topics = contactProvider.topics.map((e) => e.title).toList();
+    if (topics.isNotEmpty) {
+      setState(() {
+        dropdownValue = topics.first;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     final contactProvider = Provider.of<ContactProvider>(context);
-    final topics =
-        contactProvider.topics.data.map((e) => e.attributes.subject).toList();
+    final topics = contactProvider.topics.map((e) => e.title).toList();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -75,11 +93,10 @@ class _ContactFormState extends State<ContactForm> {
             String email = _emailController.text;
             String content = _contentController.text;
 
-            // Here, you can handle the form data accordingly, like sending an email, storing in database, etc.
-            print('Title: $title');
-            print('Email: $email');
-            print('Content: $content');
             contactProvider.sendMessage(title, email, content);
+
+            _emailController.clear();
+            _contentController.clear();
           },
           child: Text(
             'Submit',

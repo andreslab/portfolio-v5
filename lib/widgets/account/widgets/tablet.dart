@@ -1,29 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:porfolio/theme/app_theme.dart';
-import 'package:porfolio/utils.dart';
 import 'package:porfolio/widgets/widgets.dart';
-import 'package:porfolio/screens/utils.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:porfolio/models/models.dart';
 
-class Desktop extends StatelessWidget {
-  final PersonalAttributes? personalData;
-  const Desktop({
+class Tablet extends StatelessWidget {
+  final Profile? profileData;
+  const Tablet({
     super.key,
-    required this.personalData,
+    required this.profileData,
   });
 
   @override
   Widget build(BuildContext context) {
-    const minHeight = 500.0;
+    const minHeight = 550.0;
     final size = MediaQuery.of(context).size;
-    final width = size.width - Constants.DRAWER_WIDTH;
-    const minHeightScreenForFullScreen = 1000.0;
-    final isFullScreen = minHeightScreenForFullScreen >
-        size.height; //full screen or share with about
-    final responsiveHeight = size.height * 0.6;
-    final height = isFullScreen ? size.height : responsiveHeight;
+    final width = size.width;
+    final responsiveHeight = size.height;
+    final height = responsiveHeight < minHeight ? minHeight : responsiveHeight;
     return SizedBox(
       width: width,
       height: height,
@@ -38,14 +33,14 @@ class Desktop extends StatelessWidget {
             height: 10,
           ),
           Text(
-            '${personalData?.name}',
+            '${profileData?.name}',
             style: Theme.of(context).textTheme.titleLarge,
           ),
           SizedBox(
             height: 10,
           ),
           Text(
-            '${personalData?.role}',
+            '${profileData?.role}',
             style: Theme.of(context).textTheme.titleSmall,
           ),
           SizedBox(
@@ -60,7 +55,7 @@ class Desktop extends StatelessWidget {
                     color: AppTheme.iconPrimary,
                   ),
                   onPressed: () {
-                    openUrl('${personalData?.instagram}');
+                    print("Pressed");
                   }),
               IconButton(
                   icon: FaIcon(
@@ -68,7 +63,7 @@ class Desktop extends StatelessWidget {
                     color: AppTheme.iconPrimary,
                   ),
                   onPressed: () {
-                    openUrl('${personalData?.twitter}');
+                    print("Pressed");
                   }),
               IconButton(
                   icon: FaIcon(
@@ -76,7 +71,7 @@ class Desktop extends StatelessWidget {
                     color: AppTheme.iconPrimary,
                   ),
                   onPressed: () {
-                    openUrl('${personalData?.linkedin}');
+                    print("Pressed");
                   }),
               IconButton(
                   icon: FaIcon(
@@ -84,7 +79,7 @@ class Desktop extends StatelessWidget {
                     color: AppTheme.iconPrimary,
                   ),
                   onPressed: () {
-                    openUrl('${personalData?.github}');
+                    print("Pressed");
                   }),
               IconButton(
                   icon: FaIcon(
@@ -92,7 +87,7 @@ class Desktop extends StatelessWidget {
                     color: AppTheme.iconPrimary,
                   ),
                   onPressed: () {
-                    openUrl('${personalData?.facebook}');
+                    print("Pressed");
                   })
             ],
           ),
@@ -100,9 +95,7 @@ class Desktop extends StatelessWidget {
             height: 10,
           ),
           ElevatedButton(
-              onPressed: () {
-                openUrl('${personalData?.cv}');
-              },
+              onPressed: () {},
               child: Text(
                 'HIRE ME',
               )),
