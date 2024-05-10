@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:porfolio/providers/constants.dart';
 import 'package:porfolio/theme/app_theme.dart';
 
 enum Size {
@@ -27,8 +28,8 @@ class ProfileImage extends StatelessWidget {
   Widget build(BuildContext context) {
     double imageSize = getSizeValue(size);
     return ClipOval(
-      child: Image.asset(
-        "images/me.jpg",
+      child: Image.network(
+        '${Environment.assetsUrl}/me.jpg',
         height: imageSize,
         width: imageSize,
         fit: BoxFit.cover,
