@@ -94,11 +94,13 @@ class DesktopContainer extends StatelessWidget {
               mainAxisExtent: 100),
           itemCount: skills.length < maxItems ? skills.length : maxItems,
           itemBuilder: (BuildContext context, int index) {
-            return TechnologyImage(
-                isDarkTheme: isDarkTheme,
-                title: skills[index].title,
-                urlIcon:
-                    '${Environment.assetsUrl}/${skills[index].icon ?? 'default_skill.png'}');
+            return Center(
+              child: TechnologyImage(
+                  isDarkTheme: isDarkTheme,
+                  title: skills[index].title,
+                  urlIcon:
+                      '${Environment.assetsUrl}/${skills[index].icon ?? 'default_skill.png'}'),
+            );
           },
         ),
       ]),

@@ -16,7 +16,7 @@ class TechnologyImage extends StatelessWidget {
 
   const TechnologyImage(
       {super.key,
-      this.size = Size.MEDIUM,
+      this.size = Size.LARGE,
       required this.title,
       required this.urlIcon,
       this.isDarkTheme = false});
@@ -37,31 +37,37 @@ class TechnologyImage extends StatelessWidget {
     double imageSize = getSizeValue(size);
     return Container(
       padding: EdgeInsets.all(5),
-      width: imageSize * 1.1,
-      height: imageSize * 1.1,
+      width: imageSize,
+      height: imageSize,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10), color: Colors.white),
-      child: Center(
-        child: SizedBox(
-            width: imageSize,
-            height: imageSize,
-            child: Image.network('$urlIcon', fit: BoxFit.fill)),
-        // child: Column(
-        //   children: [
-        //     SizedBox(
-        //         width: imageSize,
-        //         height: imageSize,
-        //         child: Image.network('$urlIcon', fit: BoxFit.fill)),
-        //     SizedBox(
-        //       height: 5,
-        //     ),
-        //     Text(
-        //       '$title',
-        //       style: TextStyle(fontSize: 15.0, color: Colors.black),
-        //     )
-        //   ],
-        // ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            Image.network(
+              '$urlIcon',
+              fit: BoxFit.contain, // Use BoxFit.cover to cover the container
+            ),
+          ],
+        ),
       ),
+      // child: Column(
+      //   children: [
+      //     SizedBox(
+      //         width: imageSize,
+      //         height: imageSize,
+      //         child: Image.network('$urlIcon', fit: BoxFit.fill)),
+      //     SizedBox(
+      //       height: 5,
+      //     ),
+      //     Text(
+      //       '$title',
+      //       style: TextStyle(fontSize: 15.0, color: Colors.black),
+      //     )
+      //   ],
+      // ),
     );
   }
 }
