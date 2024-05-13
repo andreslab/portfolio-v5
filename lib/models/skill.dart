@@ -14,12 +14,14 @@ class Skill {
   String id;
   String title;
   String category;
+  String? icon;
   int v;
 
   Skill({
     required this.id,
     required this.title,
     required this.category,
+    this.icon,
     required this.v,
   });
 
@@ -27,6 +29,7 @@ class Skill {
         id: json["_id"],
         title: json["title"],
         category: json["category"],
+        icon: json["icon"],
         v: json["__v"],
       );
 
@@ -34,6 +37,7 @@ class Skill {
         "_id": id,
         "title": title,
         "category": category,
+        "icon": icon,
         "__v": v,
       };
 }

@@ -35,27 +35,32 @@ class TechnologyImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double imageSize = getSizeValue(size);
-    return SizedBox(
+    return Container(
+      padding: EdgeInsets.all(5),
       width: imageSize * 1.1,
       height: imageSize * 1.1,
-      child: Column(
-        children: [
-          Center(
-            child: SizedBox(
-                width: imageSize,
-                height: imageSize,
-                child: Image.network('$urlIcon', fit: BoxFit.fill)),
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Text(
-            '$title',
-            style: TextStyle(
-                fontSize: 15.0,
-                color: isDarkTheme ? Colors.white : Colors.black),
-          )
-        ],
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10), color: Colors.white),
+      child: Center(
+        child: SizedBox(
+            width: imageSize,
+            height: imageSize,
+            child: Image.network('$urlIcon', fit: BoxFit.fill)),
+        // child: Column(
+        //   children: [
+        //     SizedBox(
+        //         width: imageSize,
+        //         height: imageSize,
+        //         child: Image.network('$urlIcon', fit: BoxFit.fill)),
+        //     SizedBox(
+        //       height: 5,
+        //     ),
+        //     Text(
+        //       '$title',
+        //       style: TextStyle(fontSize: 15.0, color: Colors.black),
+        //     )
+        //   ],
+        // ),
       ),
     );
   }
