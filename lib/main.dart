@@ -32,6 +32,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => ProfileProvider(),
           lazy: false,
+        ),
+        ChangeNotifierProvider(
+          create: (_) => SkillProvider(),
         )
       ],
       child: MaterialApp(

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:porfolio/models/skill.dart';
 import 'package:porfolio/theme/app_theme.dart';
+import 'package:porfolio/utils.dart';
 import 'package:porfolio/widgets/widgets.dart';
 import 'package:porfolio/screens/utils.dart';
 
 class Tablet extends StatelessWidget {
+  final List<Skill> skills;
   const Tablet({
     super.key,
+    required this.skills,
   });
 
   @override
@@ -30,6 +34,9 @@ class Tablet extends StatelessWidget {
                   platform: Platform.tablet,
                   backgroundColor: AppTheme.fifth,
                   isDarkTheme: false,
+                  skills: skills
+                      .where((e) => e.category == SkillCategories.frontend)
+                      .toList(),
                 ),
                 SizedBox(
                   height: 10,
@@ -39,6 +46,9 @@ class Tablet extends StatelessWidget {
                   platform: Platform.tablet,
                   backgroundColor: AppTheme.primary,
                   isDarkTheme: true,
+                  skills: skills
+                      .where((e) => e.category == SkillCategories.mobile)
+                      .toList(),
                 ),
                 SizedBox(
                   height: 10,
@@ -48,6 +58,9 @@ class Tablet extends StatelessWidget {
                   platform: Platform.tablet,
                   backgroundColor: AppTheme.sixth,
                   isDarkTheme: false,
+                  skills: skills
+                      .where((e) => e.category == SkillCategories.backend)
+                      .toList(),
                 ),
               ],
             ),

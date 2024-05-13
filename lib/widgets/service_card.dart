@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:porfolio/models/skill.dart';
+import 'package:porfolio/providers/constants.dart';
 import 'package:porfolio/widgets/technology_image.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -9,13 +11,15 @@ class ServiceCard extends StatelessWidget {
   final Color backgroundColor;
   final bool isDarkTheme;
   final String title;
+  final List<Skill> skills;
 
   const ServiceCard(
       {super.key,
       required this.platform,
       required this.backgroundColor,
       required this.isDarkTheme,
-      required this.title});
+      required this.title,
+      required this.skills});
 
   @override
   Widget build(BuildContext context) {
@@ -25,22 +29,28 @@ class ServiceCard extends StatelessWidget {
           title: title,
           backgroundColor: backgroundColor,
           isDarkTheme: isDarkTheme,
+          skills: skills,
         );
       case Platform.tablet:
         return TabletContainer(
+          title: title,
           backgroundColor: backgroundColor,
           isDarkTheme: isDarkTheme,
+          skills: skills,
         );
       case Platform.mobile:
         return MobileContainer(
+          title: title,
           backgroundColor: backgroundColor,
           isDarkTheme: isDarkTheme,
+          skills: skills,
         );
       default:
         return DesktopContainer(
           title: title,
           backgroundColor: backgroundColor,
           isDarkTheme: isDarkTheme,
+          skills: skills,
         );
     }
   }
@@ -50,11 +60,14 @@ class DesktopContainer extends StatelessWidget {
   final Color backgroundColor;
   final bool isDarkTheme;
   final String title;
+  final List<Skill> skills;
+  final maxItems = 6;
   const DesktopContainer(
       {super.key,
       required this.backgroundColor,
       required this.isDarkTheme,
-      required this.title});
+      required this.title,
+      required this.skills});
 
   @override
   Widget build(BuildContext context) {
@@ -75,14 +88,17 @@ class DesktopContainer extends StatelessWidget {
           padding: EdgeInsets.all(10),
           shrinkWrap: true,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // Número de columnas en el grid
-            crossAxisSpacing: 2.0, // Espacio horizontal entre los elementos
-            mainAxisSpacing: 2.0, // Espacio vertical entre los elementos
-          ),
-          itemCount: 3,
+              crossAxisCount: 2, // Número de columnas en el grid
+              crossAxisSpacing: 5.0, // Espacio horizontal entre los elementos
+              mainAxisSpacing: 5.0, // Espacio vertical entre los elementos
+              mainAxisExtent: 100),
+          itemCount: skills.length < maxItems ? skills.length : maxItems,
           itemBuilder: (BuildContext context, int index) {
             return TechnologyImage(
-                isDarkTheme: isDarkTheme, title: 'Tech', urlIcon: '');
+                isDarkTheme: isDarkTheme,
+                title: skills[index].title,
+                urlIcon:
+                    '${Environment.assetsUrl}/${skills[index].icon ?? 'default_skill.png'}');
           },
         ),
       ]),
@@ -93,8 +109,15 @@ class DesktopContainer extends StatelessWidget {
 class TabletContainer extends StatelessWidget {
   final Color backgroundColor;
   final bool isDarkTheme;
-  const TabletContainer(
-      {super.key, required this.backgroundColor, required this.isDarkTheme});
+  final String title;
+  final List<Skill> skills;
+  const TabletContainer({
+    super.key,
+    required this.backgroundColor,
+    required this.isDarkTheme,
+    required this.title,
+    required this.skills,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +145,7 @@ class TabletContainer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                'Title',
+                title,
                 style: TextStyle(
                     fontSize: 30.0,
                     color: isDarkTheme ? Colors.white : Colors.black),
@@ -131,7 +154,7 @@ class TabletContainer extends StatelessWidget {
                 height: 5,
               ),
               Text(
-                'Lorem ipsum dolor sit amet consectetuer adipiscing elit aenean commodo ligula eget.',
+                skills.map((e) => e.title).join(','),
                 style: TextStyle(
                     fontSize: 15.0,
                     color: isDarkTheme ? Colors.white : Colors.black),
@@ -148,8 +171,15 @@ class TabletContainer extends StatelessWidget {
 class MobileContainer extends StatelessWidget {
   final Color backgroundColor;
   final bool isDarkTheme;
-  const MobileContainer(
-      {super.key, required this.backgroundColor, required this.isDarkTheme});
+  final String title;
+  final List<Skill> skills;
+  const MobileContainer({
+    super.key,
+    required this.backgroundColor,
+    required this.isDarkTheme,
+    required this.title,
+    required this.skills,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -163,7 +193,7 @@ class MobileContainer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
-              'Title',
+              title,
               style: TextStyle(
                   fontSize: 30.0,
                   color: isDarkTheme ? Colors.white : Colors.black),
@@ -172,7 +202,7 @@ class MobileContainer extends StatelessWidget {
               height: 5,
             ),
             Text(
-              'Lorem ipsum dolor sit amet consectetuer adipiscing elit aenean commodo ligula eget.',
+              skills.map((e) => e.title).join(','),
               style: TextStyle(
                   fontSize: 15.0,
                   color: isDarkTheme ? Colors.white : Colors.black),
