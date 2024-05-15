@@ -23,7 +23,7 @@ class Body extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TitleWithKey(key: uiProvider.servicesKey, title: 'Services'),
+        TitleWithKey(key: uiProvider.servicesKey, title: 'Skills'),
         SizedBox(
           height: 20,
         ),

@@ -37,13 +37,15 @@ class ServiceCard extends StatelessWidget {
           backgroundColor: backgroundColor,
           isDarkTheme: isDarkTheme,
           skills: skills,
+          size: Size.MEDIUM,
         );
       case Platform.mobile:
-        return MobileContainer(
+        return TabletContainer(
           title: title,
           backgroundColor: backgroundColor,
           isDarkTheme: isDarkTheme,
           skills: skills,
+          size: Size.SMALL,
         );
       default:
         return DesktopContainer(
@@ -113,24 +115,28 @@ class TabletContainer extends StatelessWidget {
   final bool isDarkTheme;
   final String title;
   final List<Skill> skills;
+  final Size size;
   const TabletContainer({
     super.key,
     required this.backgroundColor,
     required this.isDarkTheme,
     required this.title,
     required this.skills,
+    required this.size,
   });
 
   @override
   Widget build(BuildContext context) {
+    final double sizeImage = size == Size.SMALL ? 60 : 100;
+
     return Container(
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10), color: backgroundColor),
       child: Row(children: [
         SizedBox(
-          width: 100,
-          height: 100,
+          width: sizeImage,
+          height: sizeImage,
           child: Image.asset(
             'images/image-preview.png',
             fit: BoxFit.cover,
