@@ -44,6 +44,7 @@ class Desktop extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Expanded(
                             flex: 1,
@@ -51,10 +52,9 @@ class Desktop extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
-
+                                  profileData.resume,
                                   style: Theme.of(context).textTheme.bodyMedium,
-                                  maxLines: 10,
+                                  maxLines: 15,
                                   overflow: TextOverflow.ellipsis,
                                   // softWrap:
                                   //     true, // Allows text to wrap onto the next line
@@ -87,22 +87,22 @@ class Desktop extends StatelessWidget {
                               children: [
                                 LevelSkill(
                                   title: 'Mobile',
-                                  value: 80,
+                                  value: 90,
                                 ),
                                 SizedBox(height: 5.0),
                                 LevelSkill(
                                   title: 'Backend',
-                                  value: 40,
+                                  value: 70,
                                 ),
                                 SizedBox(height: 5.0),
                                 LevelSkill(
                                   title: 'Frontend',
-                                  value: 60,
+                                  value: 90,
                                 ),
                                 SizedBox(height: 5.0),
                                 LevelSkill(
                                   title: 'Devops',
-                                  value: 80,
+                                  value: 60,
                                 )
                               ],
                             ),
