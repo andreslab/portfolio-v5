@@ -15,7 +15,7 @@ class Mobile extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final width = size.width;
-    const height = 500.0;
+    const height = 550.0;
     return SizedBox(
       width: width,
       height: height,
