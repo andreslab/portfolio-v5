@@ -47,8 +47,8 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
-          source: "./build/web"
-          target: "/source"
+          source: "./build/web/*"
+          target: "/usr/share/nginx/html"
 
       # - name: Deploy to Staging server
       #   uses: easingthemes/ssh-deploy@main
