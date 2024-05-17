@@ -50,6 +50,6 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: "/var/www/cv/"
           SCRIPT_BEFORE: |
-            sudo rm -R /var/www/cv/*
+            sudo rm -R /var/www/cv/* || true
           SCRIPT_AFTER: |
             sudo service nginx restart
