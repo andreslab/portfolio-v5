@@ -1,3 +1,4 @@
+export 'package:porfolio/screens/detail/detail.dart';
 export 'package:porfolio/screens/products/products.dart';
 export 'package:porfolio/screens/resume/resume.dart';
 export 'package:porfolio/screens/home/home_mobile.dart';

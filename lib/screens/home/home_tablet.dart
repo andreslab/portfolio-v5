@@ -41,6 +41,8 @@ class _HomeScreenBody extends StatelessWidget {
         return ResumeScreen();
       case 1:
         return ProductsScreen();
+      case 2:
+        return DetailScreen();
       default:
         return ResumeScreen();
     }
