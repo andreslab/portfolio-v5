@@ -8,3 +8,10 @@ enum Platform {
   tablet,
   desktop,
 }
+
+class ScreenArguments {
+  final String title;
+  final String message;
+
+  ScreenArguments(this.title, this.message);
+}
