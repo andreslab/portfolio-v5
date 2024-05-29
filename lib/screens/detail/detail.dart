@@ -13,18 +13,14 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)?.settings.arguments as ScreenArguments?;
-    var nameUrl = '';
-    if (args != null) {
-      nameUrl = args.nameUrl;
-    } else {
-      String currentUrl = window.location.href; // flutter web
-      nameUrl = Uri.parse(currentUrl).pathSegments.last;
-    }
+    final args = ModalRoute.of(context)?.settings.arguments as ScreenArguments;
+    final project = args.project;
 
-    final projectProvider = Provider.of<ProjectProvider>(context);
-    projectProvider.getProjectsByName(nameUrl);
-    final project = projectProvider.currentProject;
+    String getUrl(index) {
+      return project.assets != null && project.assets.isNotEmpty
+          ? project.assets[0]
+          : 'images/image-preview.png';
+    }
 
     final size = MediaQuery.of(context).size;
     return Scaffold(
@@ -54,7 +50,7 @@ class DetailScreen extends StatelessWidget {
                     right: 0,
                     child: Center(
                       child: Text(
-                        project?.title ?? 'Project',
+                        project?.name ?? 'Project',
                         style: TextStyle(fontSize: 40),
                       ),
                     ),
@@ -90,7 +86,7 @@ class DetailScreen extends StatelessWidget {
                         decoration: BoxDecoration(color: Colors.green),
                         child: Expanded(
                             child: Image.asset(
-                          project?.assets[0] ?? 'images/image-preview.png',
+                          getUrl(0),
                           fit: BoxFit.cover,
                         )),
                       ),
@@ -124,7 +120,7 @@ class DetailScreen extends StatelessWidget {
                         decoration: BoxDecoration(color: Colors.green),
                         child: Expanded(
                             child: Image.asset(
-                          project?.assets[1] ?? 'images/image-preview.png',
+                          getUrl(1),
                           fit: BoxFit.cover,
                         )),
                       ),
@@ -138,7 +134,7 @@ class DetailScreen extends StatelessWidget {
                         decoration: BoxDecoration(color: Colors.green),
                         child: Expanded(
                             child: Image.asset(
-                          project?.assets[2] ?? 'images/image-preview.png',
+                          getUrl(2),
                           fit: BoxFit.cover,
                         )),
                       ),

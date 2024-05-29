@@ -57,8 +57,7 @@ class Desktop extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               Project project = projects[index];
               return ProjectCard(
-                title: project.title,
-                subtitle: project.description ?? '',
+                project: project,
               );
             },
           ),

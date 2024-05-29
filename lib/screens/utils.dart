@@ -1,3 +1,5 @@
+import 'package:porfolio/models/project.dart';
+
 class Constants {
   static const double DRAWER_WIDTH = 200;
   static const double MARGIN_BODY = 30;
@@ -10,6 +12,6 @@ enum Platform {
 }
 
 class ScreenArguments {
-  final String nameUrl;
-  ScreenArguments(this.nameUrl);
+  final Project project;
+  ScreenArguments(this.project);
 }

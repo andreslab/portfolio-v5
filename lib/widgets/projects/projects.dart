@@ -15,6 +15,8 @@ class Projects extends StatelessWidget {
     final uiProvider = Provider.of<UiProvider>(context);
     uiProvider.isSingleScreen = isfullScreen;
     if (isfullScreen) {
+      final projectProvider = Provider.of<ProjectProvider>(context);
+      projectProvider.getProjects();
       return Scaffold(
         body: Body(),
       );
