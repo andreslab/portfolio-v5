@@ -13,14 +13,8 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)?.settings.arguments as ScreenArguments?;
-    var nameUrl = '';
-    if (args != null) {
-      nameUrl = args.nameUrl;
-    } else {
-      String currentUrl = window.location.href; // flutter web
-      nameUrl = Uri.parse(currentUrl).pathSegments.last;
-    }
+    final args = ModalRoute.of(context)?.settings.arguments as ScreenArguments;
+    final nameUrl = args.nameUrl;
 
     final projectProvider = Provider.of<ProjectProvider>(context);
     projectProvider.getProjectsByName(nameUrl);
@@ -54,7 +48,7 @@ class DetailScreen extends StatelessWidget {
                     right: 0,
                     child: Center(
                       child: Text(
-                        project?.title ?? 'Project',
+                        project?.name ?? 'Project',
                         style: TextStyle(fontSize: 40),
                       ),
                     ),

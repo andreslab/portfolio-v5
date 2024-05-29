@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:porfolio/models/project.dart';
 import 'package:porfolio/providers/providers.dart';
 import 'package:porfolio/screens/utils.dart';
 import 'package:porfolio/theme/app_theme.dart';
 import 'package:provider/provider.dart';
 
 class ProjectCard extends StatelessWidget {
-  final String title;
-  final String subtitle;
-  const ProjectCard({Key? key, required this.title, required this.subtitle})
-      : super(key: key);
+  final Project project;
+  const ProjectCard({Key? key, required this.project}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,7 @@ class ProjectCard extends StatelessWidget {
         context,
         '/detail',
         arguments: ScreenArguments(
-          title,
+          project.nameUrl,
         ),
       ),
       child: Card(
@@ -53,12 +52,12 @@ class ProjectCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    title,
+                    project.name,
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   SizedBox(height: 5),
                   Text(
-                    subtitle,
+                    project.description,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ],
