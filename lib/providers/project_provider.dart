@@ -18,7 +18,7 @@ class ProjectProvider extends ChangeNotifier {
 
       if (response.statusCode == 200) {
         print('Response projects: ${response.body}');
-        projects.addAll(projectFromJson(response.body));
+        projects = projectFromJson(response.body);
         notifyListeners();
       } else {
         print('Failed to fetch data: ${response.statusCode}');
@@ -52,8 +52,7 @@ class ProjectProvider extends ChangeNotifier {
 
       if (response.statusCode == 200) {
         print('Response prime projects: ${response.body}');
-        currentProject =
-            Project.fromJson(response.body as Map<String, dynamic>);
+        currentProject = projectFromJson(response.body).first;
         notifyListeners();
       } else {
         print('Failed to fetch data: ${response.statusCode}');

@@ -12,7 +12,8 @@ String projectToJson(List<Project> data) =>
 
 class Project {
   String id;
-  String title;
+  String name;
+  String nameUrl;
   String status;
   String description;
   bool isPrime;
@@ -21,7 +22,8 @@ class Project {
 
   Project({
     required this.id,
-    required this.title,
+    required this.name,
+    required this.nameUrl,
     required this.status,
     required this.description,
     required this.isPrime,
@@ -31,7 +33,8 @@ class Project {
 
   factory Project.fromJson(Map<String, dynamic> json) => Project(
         id: json["_id"],
-        title: json["title"],
+        name: json["name"],
+        nameUrl: json["nameUrl"],
         status: json["status"],
         description: json["description"],
         isPrime: json["isPrime"],
@@ -41,7 +44,8 @@ class Project {
 
   Map<String, dynamic> toJson() => {
         "_id": id,
-        "title": title,
+        "name": name,
+        "nameUrl": nameUrl,
         "status": status,
         "description": description,
         "isPrime": isPrime,
