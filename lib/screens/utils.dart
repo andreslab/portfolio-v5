@@ -10,8 +10,6 @@ enum Platform {
 }
 
 class ScreenArguments {
-  final String title;
-  final String message;
-
-  ScreenArguments(this.title, this.message);
+  final String nameUrl;
+  ScreenArguments(this.nameUrl);
 }

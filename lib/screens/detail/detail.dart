@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:porfolio/providers/project_provider.dart';
 import 'package:porfolio/screens/utils.dart';
 import 'package:porfolio/widgets/contact/contact.dart';
 import 'package:porfolio/widgets/contact/widgets/contact_form.dart';
+import 'package:provider/provider.dart';
+import 'dart:html';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({
@@ -10,7 +13,19 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final args = ModalRoute.of(context)!.settings.arguments as ScreenArguments;
+    final args = ModalRoute.of(context)?.settings.arguments as ScreenArguments?;
+    var nameUrl = '';
+    if (args != null) {
+      nameUrl = args.nameUrl;
+    } else {
+      String currentUrl = window.location.href; // flutter web
+      nameUrl = Uri.parse(currentUrl).pathSegments.last;
+    }
+
+    final projectProvider = Provider.of<ProjectProvider>(context);
+    projectProvider.getProjectsByName(nameUrl);
+    final project = projectProvider.currentProject;
+
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
@@ -39,7 +54,7 @@ class DetailScreen extends StatelessWidget {
                     right: 0,
                     child: Center(
                       child: Text(
-                        'Title project',
+                        project?.title ?? 'Project',
                         style: TextStyle(fontSize: 40),
                       ),
                     ),
@@ -75,7 +90,7 @@ class DetailScreen extends StatelessWidget {
                         decoration: BoxDecoration(color: Colors.green),
                         child: Expanded(
                             child: Image.asset(
-                          'images/image-preview.png',
+                          project?.assets[0] ?? 'images/image-preview.png',
                           fit: BoxFit.cover,
                         )),
                       ),
@@ -85,7 +100,7 @@ class DetailScreen extends StatelessWidget {
                       Expanded(
                         child: Text(
                           maxLines: 20,
-                          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+                          project?.description ?? '',
                           textAlign: TextAlign.justify,
                         ),
                       )
@@ -96,7 +111,7 @@ class DetailScreen extends StatelessWidget {
                       Expanded(
                         child: Text(
                           maxLines: 20,
-                          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+                          project?.description ?? '',
                           textAlign: TextAlign.justify,
                         ),
                       ),
@@ -109,7 +124,7 @@ class DetailScreen extends StatelessWidget {
                         decoration: BoxDecoration(color: Colors.green),
                         child: Expanded(
                             child: Image.asset(
-                          'images/image-preview.png',
+                          project?.assets[1] ?? 'images/image-preview.png',
                           fit: BoxFit.cover,
                         )),
                       ),
@@ -123,7 +138,7 @@ class DetailScreen extends StatelessWidget {
                         decoration: BoxDecoration(color: Colors.green),
                         child: Expanded(
                             child: Image.asset(
-                          'images/image-preview.png',
+                          project?.assets[2] ?? 'images/image-preview.png',
                           fit: BoxFit.cover,
                         )),
                       ),
@@ -133,8 +148,7 @@ class DetailScreen extends StatelessWidget {
                       Expanded(
                         child: Text(
                           maxLines: 20,
-                          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-                          textAlign: TextAlign.justify,
+                          project?.description ?? '',
                         ),
                       )
                     ],

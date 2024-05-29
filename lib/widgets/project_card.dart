@@ -22,7 +22,6 @@ class ProjectCard extends StatelessWidget {
         '/detail',
         arguments: ScreenArguments(
           title,
-          'This message is extracted in the build method.',
         ),
       ),
       child: Card(
