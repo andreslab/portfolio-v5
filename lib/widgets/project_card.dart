@@ -20,7 +20,7 @@ class ProjectCard extends StatelessWidget {
         context,
         '/detail',
         arguments: ScreenArguments(
-          project.nameUrl,
+          project,
         ),
       ),
       child: Card(
