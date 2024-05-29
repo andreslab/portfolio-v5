@@ -71,8 +71,7 @@ class Desktop extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: Constants.MARGIN_BODY),
               child: GestureDetector(
                   onTap: () {
-                    uiProvider.isSingleScreen = true;
-                    uiProvider.selectedMenuOpt = 1;
+                    Navigator.pushNamed(context, '/projects');
                   },
                   child: Text(
                     'See All',

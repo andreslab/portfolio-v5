@@ -3,7 +3,7 @@ name: Deploy Porfolio
 on:
   push:
     branches:
-      - aws
+      - release
 
 jobs:
   deploy:

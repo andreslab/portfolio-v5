@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:porfolio/responsive/responsive.dart';
 import 'package:porfolio/responsive/responsive.dart';
 import 'package:porfolio/screens/screens.dart';
+import 'package:porfolio/widgets/secret/secret.dart';
 import 'package:provider/provider.dart';
 
 import 'package:porfolio/providers/ui_provider.dart';
@@ -38,7 +39,7 @@ class _HomeScreenBody extends StatelessWidget {
       case 0:
         return ResumeScreen();
       case 1:
-        return ProductsScreen();
+        return Secret(); //secret screen
       default:
         return ResumeScreen();
     }

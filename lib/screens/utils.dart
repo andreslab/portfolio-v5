@@ -8,3 +8,8 @@ enum Platform {
   tablet,
   desktop,
 }
+
+class ScreenArguments {
+  final String nameUrl;
+  ScreenArguments(this.nameUrl);
+}

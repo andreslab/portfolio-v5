@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:porfolio/responsive/responsive.dart';
+import 'package:porfolio/screens/screens.dart';
+import 'package:porfolio/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:porfolio/providers/providers.dart';
 import 'package:porfolio/theme/app_theme.dart';
@@ -40,12 +42,16 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Porfolio',
-        initialRoute: 'home',
+        initialRoute: '/',
         routes: {
-          'home': (_) => ResponseLayout(
+          '/': (_) => ResponseLayout(
               mobileScaffold: MobileScaffold(),
               tabletScaffold: TabletScaffold(),
               desktopScaffold: DesktopScaffold()),
+          '/projects': (_) => Projects(
+                isfullScreen: true,
+              ),
+          '/detail': (_) => DetailScreen()
         },
         theme: AppTheme.themeData,
       ),
