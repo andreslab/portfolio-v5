@@ -6,6 +6,7 @@ import 'package:porfolio/providers/constants.dart';
 class ProjectProvider extends ChangeNotifier {
   List<Project> projects = [];
   Project? currentProject;
+  bool hasCompleteList = false;
 
   ProjectProvider() {
     getPrimeProjects();
@@ -29,6 +30,7 @@ class ProjectProvider extends ChangeNotifier {
   }
 
   getPrimeProjects() async {
+    if (hasCompleteList) return;
     try {
       var url = Uri.parse('${Environment.apiUrl}/projects/prime');
       final response = await http.get(url);
@@ -36,6 +38,7 @@ class ProjectProvider extends ChangeNotifier {
       if (response.statusCode == 200) {
         print('Response prime projects: ${response.body}');
         projects = projectFromJson(response.body);
+        hasCompleteList = true;
         notifyListeners();
       } else {
         print('Failed to fetch data: ${response.statusCode}');
