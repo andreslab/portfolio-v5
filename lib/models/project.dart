@@ -16,8 +16,9 @@ class Project {
   String nameUrl;
   String status;
   String description;
+  List<dynamic>? details;
   bool isPrime;
-  List<dynamic> assets;
+  List<dynamic>? assets;
   int v;
 
   Project({
@@ -26,8 +27,9 @@ class Project {
     required this.nameUrl,
     required this.status,
     required this.description,
+    this.details,
     required this.isPrime,
-    required this.assets,
+    this.assets,
     required this.v,
   });
 
@@ -37,8 +39,9 @@ class Project {
         nameUrl: json["nameUrl"],
         status: json["status"],
         description: json["description"],
+        details: json["details"] ?? [],
         isPrime: json["isPrime"],
-        assets: List<dynamic>.from(json["assets"].map((x) => x)),
+        assets: json["assets"] ?? [],
         v: json["__v"],
       );
 
@@ -48,8 +51,9 @@ class Project {
         "nameUrl": nameUrl,
         "status": status,
         "description": description,
+        "details": details,
         "isPrime": isPrime,
-        "assets": List<dynamic>.from(assets.map((x) => x)),
+        "assets": assets,
         "__v": v,
       };
 }
