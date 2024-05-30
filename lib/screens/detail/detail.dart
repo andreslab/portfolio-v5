@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:porfolio/providers/project_provider.dart';
 import 'package:porfolio/screens/utils.dart';
+import 'package:porfolio/utils.dart';
 import 'package:porfolio/widgets/contact/contact.dart';
 import 'package:porfolio/widgets/contact/widgets/contact_form.dart';
-import 'package:provider/provider.dart';
-import 'dart:html';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({
@@ -16,10 +15,15 @@ class DetailScreen extends StatelessWidget {
     final args = ModalRoute.of(context)?.settings.arguments as ScreenArguments;
     final project = args.project;
 
-    String getUrl(index) {
-      return project.assets != null && project.assets.isNotEmpty
-          ? project.assets[0]
-          : 'images/image-preview.png';
+    String getAssetUrl(index) {
+      if ((project.assets?.length ?? 0) < (index + 1))
+        return 'images/image-preview.png';
+      return project.assets?[index];
+    }
+
+    String getDetail(index) {
+      if ((project.details?.length ?? 0) < (index + 1)) return 'Sample detail';
+      return project.details?[index];
     }
 
     final size = MediaQuery.of(context).size;
@@ -38,11 +42,10 @@ class DetailScreen extends StatelessWidget {
                   //   fit:
                   //       BoxFit.contain, // Use BoxFit.cover to cover the container
                   // ),
-                  Expanded(
-                      child: Image.asset(
+                  Image.asset(
                     'images/image-preview.png',
                     fit: BoxFit.cover,
-                  )),
+                  ),
                   Positioned(
                     bottom:
                         20, // Adjust as needed for spacing between title and button
@@ -50,7 +53,7 @@ class DetailScreen extends StatelessWidget {
                     right: 0,
                     child: Center(
                       child: Text(
-                        project?.name ?? 'Project',
+                        project.name,
                         style: TextStyle(fontSize: 40),
                       ),
                     ),
@@ -74,86 +77,88 @@ class DetailScreen extends StatelessWidget {
             SizedBox(
               height: 50,
             ),
-            Padding(
-              padding: const EdgeInsets.all(Constants.MARGIN_BODY),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        width: 450,
-                        height: 300,
-                        decoration: BoxDecoration(color: Colors.green),
-                        child: Expanded(
-                            child: Image.asset(
-                          getUrl(0),
-                          fit: BoxFit.cover,
-                        )),
-                      ),
-                      SizedBox(
-                        width: 50,
-                      ),
-                      Expanded(
-                        child: Text(
-                          maxLines: 20,
-                          project?.description ?? '',
-                          textAlign: TextAlign.justify,
+            SizedBox(
+              width: size.width,
+              child: Padding(
+                padding: const EdgeInsets.all(Constants.MARGIN_BODY),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          width: 450,
+                          height: 300,
+                          decoration: BoxDecoration(color: Colors.green),
+                          child: Image.asset(
+                            getAssetUrl(0),
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          maxLines: 20,
-                          project?.description ?? '',
-                          textAlign: TextAlign.justify,
+                        SizedBox(
+                          width: 50,
                         ),
-                      ),
-                      SizedBox(
-                        width: 50,
-                      ),
-                      Container(
-                        width: 300,
-                        height: 250,
-                        decoration: BoxDecoration(color: Colors.green),
-                        child: Expanded(
-                            child: Image.asset(
-                          getUrl(1),
-                          fit: BoxFit.cover,
-                        )),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        width: 300,
-                        height: 250,
-                        decoration: BoxDecoration(color: Colors.green),
-                        child: Expanded(
-                            child: Image.asset(
-                          getUrl(2),
-                          fit: BoxFit.cover,
-                        )),
-                      ),
-                      SizedBox(
-                        width: 50,
-                      ),
-                      Expanded(
-                        child: Text(
-                          maxLines: 20,
-                          project?.description ?? '',
+                        Expanded(
+                          child: Text(
+                            maxLines: 20,
+                            getDetail(0),
+                            textAlign: TextAlign.justify,
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            maxLines: 20,
+                            getDetail(1),
+                            textAlign: TextAlign.justify,
+                          ),
                         ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 50,
-                  ),
-                  ContactForm()
-                ],
+                        SizedBox(
+                          width: 50,
+                        ),
+                        Container(
+                          width: 300,
+                          height: 250,
+                          decoration: BoxDecoration(color: Colors.green),
+                          child: Image.asset(
+                            getAssetUrl(1),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          width: 300,
+                          height: 250,
+                          decoration: BoxDecoration(color: Colors.green),
+                          child: Image.asset(
+                            getAssetUrl(2),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 50,
+                        ),
+                        Expanded(
+                          child: Text(
+                            maxLines: 20,
+                            getDetail(2),
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    ContactForm()
+                  ],
+                ),
               ),
             )
           ],
