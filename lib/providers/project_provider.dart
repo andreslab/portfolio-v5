@@ -9,7 +9,7 @@ class ProjectProvider extends ChangeNotifier {
   bool hasCompleteList = false;
 
   ProjectProvider() {
-    getPrimeProjects();
+    getProjects();
   }
 
   getProjects() async {

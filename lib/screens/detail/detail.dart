@@ -4,6 +4,7 @@ import 'package:porfolio/screens/utils.dart';
 import 'package:porfolio/utils.dart';
 import 'package:porfolio/widgets/contact/contact.dart';
 import 'package:porfolio/widgets/contact/widgets/contact_form.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({
@@ -24,6 +25,12 @@ class DetailScreen extends StatelessWidget {
     String getDetail(index) {
       if ((project.details?.length ?? 0) < (index + 1)) return 'Sample detail';
       return project.details?[index];
+    }
+
+    Future<void> _launchUrl(url) async {
+      if (!await launchUrl(url)) {
+        throw Exception('Could not launch $url');
+      }
     }
 
     final size = MediaQuery.of(context).size;
@@ -65,7 +72,9 @@ class DetailScreen extends StatelessWidget {
                       width: 100,
                       height: 50,
                       child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            _launchUrl(Uri.parse('https://google.com'));
+                          },
                           child: Text(
                             'DEMO',
                           )),
