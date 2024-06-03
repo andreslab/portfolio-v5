@@ -16,11 +16,13 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final uiProvider = Provider.of<UiProvider>(context);
     final projectProvider = Provider.of<ProjectProvider>(context);
-    final projects = projectProvider.projects;
+    final projects = uiProvider.isSingleScreen
+        ? projectProvider.projects
+        : projectProvider.projects.where((item) => item.isPrime).toList();
     final categoryProvider = Provider.of<CategoryProvider>(context);
     final categories = categoryProvider.categories;
-    final uiProvider = Provider.of<UiProvider>(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
